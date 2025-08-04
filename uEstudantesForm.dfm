@@ -12,32 +12,46 @@ object Form2: TForm2
   Font.Style = []
   TextHeight = 15
   object Panel1: TPanel
-    Left = 136
-    Top = -32
+    Left = 160
+    Top = -56
     Width = 900
     Height = 729
     TabOrder = 0
+    object Label1: TLabel
+      Left = 304
+      Top = 96
+      Width = 305
+      Height = 22
+      Caption = 'Label1'
+    end
     object ListBox1: TListBox
-      Left = 64
-      Top = 128
-      Width = 761
+      AlignWithMargins = True
+      Left = 21
+      Top = 121
+      Width = 858
       Height = 233
+      Margins.Left = 20
+      Margins.Top = 120
+      Margins.Right = 20
+      Align = alTop
       ItemHeight = 15
       TabOrder = 0
+      ExplicitLeft = 4
+      ExplicitTop = 89
     end
     object PnlButton: TPanel
       AlignWithMargins = True
       Left = 4
-      Top = 631
+      Top = 591
       Width = 892
       Height = 77
-      Margins.Top = 20
-      Margins.Bottom = 20
+      Margins.Bottom = 60
       Align = alBottom
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 648
+      ExplicitLeft = 21
+      ExplicitTop = 611
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 600
@@ -85,23 +99,21 @@ object Form2: TForm2
         Align = alLeft
         Caption = 'Adicionar'
         TabOrder = 2
-        ExplicitLeft = 3
-        ExplicitTop = 0
-        ExplicitHeight = 122
+        ExplicitTop = 7
       end
     end
     object PnlEdit: TPanel
       AlignWithMargins = True
       Left = 4
-      Top = 411
+      Top = 328
       Width = 892
       Height = 140
-      Margins.Bottom = 60
+      Margins.Bottom = 120
       Align = alBottom
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 2
-      ExplicitTop = 446
+      ExplicitTop = 297
       object EdtCodigo: TEdit
         AlignWithMargins = True
         Left = 475
@@ -115,7 +127,8 @@ object Form2: TForm2
         TabOrder = 1
         Text = 'Digite seu C'#243'digo...'
         TextHint = 'Digite seu C'#243'digo...'
-        ExplicitLeft = 517
+        ExplicitLeft = 555
+        ExplicitTop = -56
       end
       object EdtNome: TEdit
         AlignWithMargins = True

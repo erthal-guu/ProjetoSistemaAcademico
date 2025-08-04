@@ -17,6 +17,7 @@ type
     PnlEdit: TPanel;
     EdtCodigo: TEdit;
     EdtNome: TEdit;
+    Label1: TLabel;
   private
     { Private declarations }
   public
