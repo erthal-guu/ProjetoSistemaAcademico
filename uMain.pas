@@ -10,11 +10,12 @@ type
   TForm1 = class(TForm)
     PnlMain: TPanel;
     PnlContainer: TPanel;
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
+    BtnEstudantes: TButton;
+    BtnProfessores: TButton;
+    BtnDisciplinas: TButton;
+    BtnTurmas: TButton;
+    BtnMatriculas: TButton;
+    Label2: TLabel;
   private
     { Private declarations }
   public
