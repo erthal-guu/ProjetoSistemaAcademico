@@ -1,7 +1,7 @@
-object Form2: TForm2
+object frmEstudantes: TfrmEstudantes
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'Estudantes'
   ClientHeight = 851
   ClientWidth = 1186
   Color = clBtnFace
@@ -10,6 +10,7 @@ object Form2: TForm2
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object Panel1: TPanel
     Left = 168
@@ -41,8 +42,6 @@ object Form2: TForm2
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 21
-      ExplicitTop = 611
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 600
@@ -56,9 +55,6 @@ object Form2: TForm2
         Align = alLeft
         Caption = 'Editar'
         TabOrder = 0
-        ExplicitLeft = 555
-        ExplicitTop = 3
-        ExplicitHeight = 122
       end
       object BtnRemover: TButton
         AlignWithMargins = True
@@ -73,9 +69,6 @@ object Form2: TForm2
         Align = alLeft
         Caption = 'Remover'
         TabOrder = 1
-        ExplicitLeft = 279
-        ExplicitTop = 0
-        ExplicitHeight = 122
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -91,7 +84,6 @@ object Form2: TForm2
         Caption = 'Adicionar'
         TabOrder = 2
         OnClick = BtnAdicionarClick
-        ExplicitTop = 7
       end
     end
     object PnlEdit: TPanel
@@ -106,57 +98,58 @@ object Form2: TForm2
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 388
-      object EdtCodigo: TEdit
-        AlignWithMargins = True
-        Left = 475
-        Top = 40
-        Width = 312
-        Height = 37
-        Margins.Top = 40
-        Margins.Right = 40
-        Margins.Bottom = 40
-        Align = alLeft
-        TabOrder = 1
-        Text = 'Digite seu C'#243'digo...'
-        TextHint = 'Digite seu C'#243'digo...'
-        ExplicitLeft = 555
-        ExplicitTop = -56
-        ExplicitHeight = 60
-      end
       object EdtNome: TEdit
         AlignWithMargins = True
-        Left = 120
+        Left = 30
         Top = 40
-        Width = 312
+        Width = 275
         Height = 37
-        Margins.Left = 120
+        Margins.Left = 30
         Margins.Top = 40
-        Margins.Right = 40
         Margins.Bottom = 40
         Align = alLeft
         TabOrder = 0
-        Text = 'Digite seu Nome...'
-        TextHint = 'Digite seu Nome...'
-        ExplicitTop = 34
+        TextHint = 'Digite seu Nome..'
+        ExplicitHeight = 23
+      end
+      object EdtCodigo: TEdit
+        AlignWithMargins = True
+        Left = 311
+        Top = 40
+        Width = 275
+        Height = 37
+        Margins.Top = 40
+        Margins.Bottom = 40
+        Align = alLeft
+        NumbersOnly = True
+        TabOrder = 1
+        TextHint = 'Digite seu C'#243'digo...'
+        ExplicitHeight = 23
+      end
+      object edtCPF: TEdit
+        AlignWithMargins = True
+        Left = 592
+        Top = 40
+        Width = 275
+        Height = 37
+        Margins.Top = 40
+        Margins.Bottom = 40
+        Align = alLeft
+        NumbersOnly = True
+        TabOrder = 2
+        TextHint = 'Digite seu CPF...'
+        ExplicitHeight = 23
       end
     end
     object StringGrid1: TStringGrid
-      AlignWithMargins = True
-      Left = 21
-      Top = 161
-      Width = 858
-      Height = 241
-      Margins.Left = 20
-      Margins.Top = 160
-      Margins.Right = 20
-      Align = alTop
-      ColCount = 2
+      Left = 56
+      Top = 192
+      Width = 785
+      Height = 169
+      ColCount = 3
+      FixedCols = 0
       RowCount = 2
       TabOrder = 2
-      ExplicitLeft = 4
-      ExplicitTop = 144
-      ExplicitWidth = 892
     end
   end
 end

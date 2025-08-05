@@ -1,8 +1,8 @@
-object Form1: TForm1
+object frmMain: TfrmMain
   Left = 0
   Top = 0
   Align = alClient
-  Caption = 'Form1'
+  Caption = 'frmMain'
   ClientHeight = 850
   ClientWidth = 1115
   Color = clBtnHighlight
@@ -38,8 +38,7 @@ object Form1: TForm1
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 29
-      ExplicitTop = 37
+      ExplicitWidth = 266
     end
     object PnlContainer: TPanel
       Left = 56
@@ -68,9 +67,6 @@ object Form1: TForm1
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 152
-        ExplicitTop = 56
-        ExplicitWidth = 400
       end
       object BtnProfessores: TButton
         AlignWithMargins = True
@@ -91,9 +87,6 @@ object Form1: TForm1
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 160
-        ExplicitTop = 64
-        ExplicitWidth = 400
       end
       object BtnDisciplinas: TButton
         AlignWithMargins = True
@@ -114,9 +107,6 @@ object Form1: TForm1
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 2
-        ExplicitLeft = 168
-        ExplicitTop = 72
-        ExplicitWidth = 400
       end
       object BtnTurmas: TButton
         AlignWithMargins = True
@@ -137,9 +127,6 @@ object Form1: TForm1
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 3
-        ExplicitLeft = 176
-        ExplicitTop = 80
-        ExplicitWidth = 400
       end
       object BtnMatriculas: TButton
         AlignWithMargins = True
@@ -154,9 +141,6 @@ object Form1: TForm1
         Align = alBottom
         Caption = 'Matriculas'
         TabOrder = 4
-        ExplicitLeft = 184
-        ExplicitTop = 88
-        ExplicitWidth = 400
       end
     end
   end

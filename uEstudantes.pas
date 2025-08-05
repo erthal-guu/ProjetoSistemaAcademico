@@ -1,33 +1,58 @@
 unit uEstudantes;
 
-
 interface
 
-uses uCodigo;
+// Criação da Classe de Estudantes
+Type
+  TEstudantes = class
+    NomeEstudante: String;
+    Codigo: Integer;
+    CPF: String;
 
-//Criação da Classe de Estudantes
- Type TEstudantes = class (TCodigo)
-  NomeEstudante:String;
+    // Getters e setters de NomeEstudante
+    function getNomeEstudante: String;
+    procedure setNomeEstudante(aNomeEstudante: String);
+    // Getters e setters de Codigo
+    function getCodigo: Integer;
+    procedure setCodigo(aCodigo: Integer);
+    // Getters e setters do CPF
+    Function getCPF: String;
+    procedure setCPF(aCPF: String);
 
-
-// Getters e setters de NomeEstudante
-function getNomeEstudante :String;
-procedure setNomeEstudante(aNomeEstudante:String);
-
-end;
+  end;
 
 implementation
 
 { TEstudantes }
 
+function TEstudantes.getCodigo: Integer;
+begin
+  Result := Self.Codigo;
+end;
+
+function TEstudantes.getCPF: String;
+begin
+  Result := Self.CPF;
+end;
+
 function TEstudantes.getNomeEstudante: String;
-  begin
-    Result := Self.NomeEstudante;
-  end;
+begin
+  Result := Self.NomeEstudante;
+end;
+
+procedure TEstudantes.setCodigo(aCodigo: Integer);
+begin
+  Self.Codigo := aCodigo;
+end;
+
+procedure TEstudantes.setCPF(aCPF: String);
+begin
+  Self.CPF := aCPF;
+end;
 
 procedure TEstudantes.setNomeEstudante(aNomeEstudante: String);
-  begin
+begin
   Self.NomeEstudante := aNomeEstudante;
-  end;
+end;
 
 end.
