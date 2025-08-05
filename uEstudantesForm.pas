@@ -23,6 +23,7 @@ type
     StringGrid1: TStringGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure BtnRemoverClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,6 +32,8 @@ type
 
 var
   frmEstudantes: TfrmEstudantes;
+  type
+  TStringGridAcessor = class(TStringGrid);
 
 implementation
 
@@ -50,7 +53,21 @@ begin
   StringGrid1.Cells[1,LinhaAdicionada.ToInteger] := EdtNome.Text;
   StringGrid1.Cells[2,LinhaAdicionada.ToInteger] := EdtCPF.Text;
   StringGrid1.RowCount := StringGrid1.RowCount + 1;
+  EdtNome.Clear;
+  EdtCodigo.Clear;
+  EdtCPF.Clear;
 end;
+
+procedure TfrmEstudantes.BtnRemoverClick(Sender: TObject);
+var
+  linhaSelecionada: Integer;
+begin
+  LinhaSelecionada := StringGrid1.Row;
+
+
+  TStringGridAcessor(StringGrid1).DeleteRow(LinhaSelecionada);
+end;
+
 
 procedure TfrmEstudantes.FormCreate(Sender: TObject);
 begin

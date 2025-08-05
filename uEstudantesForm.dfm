@@ -69,6 +69,7 @@ object frmEstudantes: TfrmEstudantes
         Align = alLeft
         Caption = 'Remover'
         TabOrder = 1
+        OnClick = BtnRemoverClick
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
