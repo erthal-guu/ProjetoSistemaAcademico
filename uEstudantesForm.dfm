@@ -21,7 +21,7 @@ object frmEstudantes: TfrmEstudantes
     TabOrder = 0
     object Label1: TLabel
       Left = 336
-      Top = 75
+      Top = 139
       Width = 203
       Height = 40
       Caption = 'Lista de Aluno '
@@ -43,7 +43,6 @@ object frmEstudantes: TfrmEstudantes
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 512
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 610
@@ -58,7 +57,6 @@ object frmEstudantes: TfrmEstudantes
         Caption = 'Editar'
         TabOrder = 0
         OnClick = BtnEditarClick
-        ExplicitLeft = 592
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -89,64 +87,6 @@ object frmEstudantes: TfrmEstudantes
         Caption = 'Remover'
         TabOrder = 2
         OnClick = BtnRemoverClick
-        ExplicitLeft = 240
-      end
-    end
-    object PnlEdit: TPanel
-      AlignWithMargins = True
-      Left = 4
-      Top = 111
-      Width = 892
-      Height = 119
-      Margins.Top = 110
-      Margins.Bottom = 150
-      Align = alTop
-      BevelOuter = bvNone
-      Color = clMenu
-      ParentBackground = False
-      TabOrder = 1
-      ExplicitTop = 109
-      object EdtNome: TEdit
-        AlignWithMargins = True
-        Left = 30
-        Top = 40
-        Width = 275
-        Height = 39
-        Margins.Left = 30
-        Margins.Top = 40
-        Margins.Bottom = 40
-        Align = alLeft
-        TabOrder = 0
-        TextHint = 'Digite seu Nome..'
-        ExplicitLeft = 0
-      end
-      object EdtCodigo: TEdit
-        AlignWithMargins = True
-        Left = 311
-        Top = 40
-        Width = 275
-        Height = 39
-        Margins.Top = 40
-        Margins.Bottom = 40
-        Align = alLeft
-        NumbersOnly = True
-        TabOrder = 1
-        TextHint = 'Digite seu C'#243'digo...'
-        ExplicitLeft = 30
-      end
-      object edtCPF: TEdit
-        AlignWithMargins = True
-        Left = 592
-        Top = 40
-        Width = 275
-        Height = 39
-        Margins.Top = 40
-        Margins.Bottom = 40
-        Align = alLeft
-        NumbersOnly = True
-        TabOrder = 2
-        TextHint = 'Digite seu CPF...'
-        ExplicitHeight = 23
       end
     end
     object StringGrid1: TStringGrid
@@ -161,8 +101,9 @@ object frmEstudantes: TfrmEstudantes
       FixedCols = 0
       RowCount = 2
       ParentShowHint = False
+      ScrollBars = ssNone
       ShowHint = False
-      TabOrder = 2
+      TabOrder = 1
       StyleName = 'Windows'
     end
   end

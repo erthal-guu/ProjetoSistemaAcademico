@@ -144,7 +144,7 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="uModalAdicionarEstudante.pas">
-            <Form>Form1</Form>
+            <Form>ModalEstudantes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

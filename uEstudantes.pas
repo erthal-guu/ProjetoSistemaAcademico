@@ -1,10 +1,11 @@
 unit uEstudantes;
 
 interface
+uses System.Generics.Collections;
 
 // Criação da Classe de Estudantes
 Type
-  TEstudantes = class
+  TEstudante = class
     NomeEstudante: String;
     Codigo: Integer;
     CPF: String;
@@ -19,40 +20,43 @@ Type
     Function getCPF: String;
     procedure setCPF(aCPF: String);
 
-  end;
-
+end;
+ var Aluno : TObjectList<TEstudante>;
 implementation
 
 { TEstudantes }
 
-function TEstudantes.getCodigo: Integer;
+function TEstudante.getCodigo: Integer;
 begin
   Result := Self.Codigo;
 end;
 
-function TEstudantes.getCPF: String;
+function TEstudante.getCPF: String;
 begin
   Result := Self.CPF;
 end;
 
-function TEstudantes.getNomeEstudante: String;
+function TEstudante.getNomeEstudante: String;
 begin
   Result := Self.NomeEstudante;
 end;
 
-procedure TEstudantes.setCodigo(aCodigo: Integer);
+procedure TEstudante.setCodigo(aCodigo: Integer);
 begin
   Self.Codigo := aCodigo;
 end;
 
-procedure TEstudantes.setCPF(aCPF: String);
+procedure TEstudante.setCPF(aCPF: String);
 begin
   Self.CPF := aCPF;
 end;
 
-procedure TEstudantes.setNomeEstudante(aNomeEstudante: String);
+procedure TEstudante.setNomeEstudante(aNomeEstudante: String);
 begin
   Self.NomeEstudante := aNomeEstudante;
 end;
+
+initialization
+Aluno := TObjectList<TEstudante>.Create;
 
 end.

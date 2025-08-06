@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
-  uEstudantes, Data.DB, Vcl.DBGrids;
+  uEstudantes, Data.DB, Vcl.DBGrids,uModalAdicionarEstudante;
 
 type
   TfrmEstudantes = class(TForm)
@@ -14,11 +14,7 @@ type
     PnlButton: TPanel;
     BtnEditar: TButton;
     BtnAdicionar: TButton;
-    PnlEdit: TPanel;
     Label1: TLabel;
-    EdtNome: TEdit;
-    EdtCodigo: TEdit;
-    edtCPF: TEdit;
     StringGrid1: TStringGrid;
     BtnRemover: TButton;
     procedure BtnAdicionarClick(Sender: TObject);
@@ -29,8 +25,9 @@ type
     { Private declarations }
   public
     procedure ExcluirAluno;
-    procedure AdicionarAluno;
+    procedure AdicionarAluno(estudante: TEstudante);
     procedure EditarAluno;
+    procedure InicializarGridEstudantes;
 
   end;
 
@@ -44,32 +41,9 @@ type
 implementation
 
 {$R *.dfm}
-
-procedure TfrmEstudantes.AdicionarAluno;
-var
-  Estudante: TEstudantes;
-begin
-  linhaAdicionada := StringGrid1.RowCount.ToString;
-  if EdtNome.text = '' then
-  begin
-    ShowMessage(' O aluno não pode ser adicionado');
-  end;
-  Estudante := TEstudantes.Create;
-  Estudante.NomeEstudante := EdtNome.text;
-  Estudante.setCodigo(StrToInt(EdtCodigo.text));
-  Estudante.setCPF(edtCPF.text);
-  StringGrid1.Cells[0, linhaAdicionada.ToInteger] := EdtCodigo.text;
-  StringGrid1.Cells[1, linhaAdicionada.ToInteger] := EdtNome.text;
-  StringGrid1.Cells[2, linhaAdicionada.ToInteger] := edtCPF.text;
-  StringGrid1.RowCount := StringGrid1.RowCount + 1;
-  EdtNome.Clear;
-  EdtCodigo.Clear;
-  edtCPF.Clear;
-end;
-
 procedure TfrmEstudantes.BtnAdicionarClick(Sender: TObject);
 begin
-  AdicionarAluno;
+  ModalEstudantes.Show;
 end;
 
 procedure TfrmEstudantes.BtnEditarClick(Sender: TObject);
@@ -82,14 +56,32 @@ begin
   ExcluirAluno;
 end;
 
+procedure TfrmEstudantes.FormCreate(Sender: TObject);
+begin
+  InicializarGridEstudantes;
+end;
+
+procedure TfrmEstudantes.AdicionarAluno(estudante: TEstudante);
+begin
+  linhaAdicionada := StringGrid1.RowCount.ToString;
+  if Estudante.getNomeEstudante = '' then begin
+    ShowMessage(' O aluno não pode ser adicionado');
+  end;
+  Estudante := TEstudante.Create;
+  Estudante.NomeEstudante := Estudante.getNomeEstudante;
+  Estudante.setCodigo(Estudante.getCodigo);
+  Estudante.setCPF(Estudante.getCPF);
+  StringGrid1.Cells[0, linhaAdicionada.ToInteger] := Estudante.getCodigo.ToString;
+  StringGrid1.Cells[1, linhaAdicionada.ToInteger] := Estudante.getNomeEstudante;
+  StringGrid1.Cells[2, linhaAdicionada.ToInteger] := Estudante.getCPF;
+  StringGrid1.RowCount := StringGrid1.RowCount + 1;
+end;
+
 procedure TfrmEstudantes.EditarAluno;
 begin
   StringGrid1.EditorMode := True;
   StringGrid1.Options := StringGrid1.Options + [goEditing];
   ShowMessage('Edição ativada!');
-  EdtCodigo.text := StringGrid1.Cells[0, linhaAdicionada.ToInteger];
-  EdtNome.text := StringGrid1.Cells[1, linhaAdicionada.ToInteger];
-  edtCPF.text := StringGrid1.Cells[2, linhaAdicionada.ToInteger];
 end;
 
 procedure TfrmEstudantes.ExcluirAluno;
@@ -103,24 +95,25 @@ begin
       ShowMessage('Você não pode excluir a primeira linha');
     end;
     TStringGridAcessor(StringGrid1).DeleteRow(linhaSelecionada);
+
   end;
 end;
 
-procedure TfrmEstudantes.FormCreate(Sender: TObject);
+
+procedure TfrmEstudantes.InicializarGridEstudantes;
 begin
   StringGrid1.RowCount := 1;
   StringGrid1.Cells[0, 0] := 'Código';
   StringGrid1.Cells[1, 0] := 'Nome';
   StringGrid1.Cells[2, 0] := 'CPF';
 
-  StringGrid1.ColWidths[0] := 281;
-  StringGrid1.ColWidths[1] := 281;
-  StringGrid1.ColWidths[2] := 281;
+  StringGrid1.ColWidths[0] := 280;
+  StringGrid1.ColWidths[1] := 280;
+  StringGrid1.ColWidths[2] := 280;
 
   StringGrid1.ColAlignments[0] := TAlignment.taCenter;
   StringGrid1.ColAlignments[1] := TAlignment.taCenter;
   StringGrid1.ColAlignments[2] := TAlignment.taCenter;
-
 end;
 
 end.

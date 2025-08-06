@@ -4,8 +4,8 @@ object ModalEstudantes: TModalEstudantes
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'ModalEstudantes'
-  ClientHeight = 185
-  ClientWidth = 316
+  ClientHeight = 416
+  ClientWidth = 733
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,32 +14,68 @@ object ModalEstudantes: TModalEstudantes
   Font.Style = []
   TextHeight = 15
   object Panel1: TPanel
-    Left = -8
+    Left = 0
     Top = 0
-    Width = 330
-    Height = 198
+    Width = 733
+    Height = 416
+    Align = alClient
     TabOrder = 0
-    object Label1: TLabel
-      Left = 24
-      Top = 56
-      Width = 241
-      Height = 15
-      Caption = 'Digite a senha Correta para excluir o aluno.'
-    end
-    object Edit1: TEdit
-      Left = 24
-      Top = 88
-      Width = 241
+    object EdtNome: TEdit
+      AlignWithMargins = True
+      Left = 31
+      Top = 101
+      Width = 671
       Height = 23
+      Margins.Left = 30
+      Margins.Top = 100
+      Margins.Right = 30
+      Margins.Bottom = 20
+      Align = alTop
       TabOrder = 0
+      TextHint = 'Digite seu Nome '
+    end
+    object edtCPF: TEdit
+      AlignWithMargins = True
+      Left = 31
+      Top = 164
+      Width = 671
+      Height = 23
+      Margins.Left = 30
+      Margins.Top = 20
+      Margins.Right = 30
+      Margins.Bottom = 20
+      Align = alTop
+      NumbersOnly = True
+      TabOrder = 1
+      TextHint = 'Digite seu CPF'
+    end
+    object EdtCodigo: TEdit
+      AlignWithMargins = True
+      Left = 31
+      Top = 227
+      Width = 671
+      Height = 23
+      Margins.Left = 30
+      Margins.Top = 20
+      Margins.Right = 30
+      Align = alTop
+      NumbersOnly = True
+      TabOrder = 2
+      TextHint = 'Digite seu C'#243'digo'
     end
     object Button1: TButton
-      Left = 24
-      Top = 136
-      Width = 241
-      Height = 25
+      AlignWithMargins = True
+      Left = 21
+      Top = 330
+      Width = 691
+      Height = 65
+      Margins.Left = 20
+      Margins.Top = 20
+      Margins.Right = 20
+      Margins.Bottom = 20
+      Align = alBottom
       Caption = 'Enviar'
-      TabOrder = 1
+      TabOrder = 3
       OnClick = Button1Click
     end
   end

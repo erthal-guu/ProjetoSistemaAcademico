@@ -10,7 +10,7 @@ uses
   uProfessores in 'uProfessores.pas',
   uTurmas in 'uTurmas.pas',
   DataModule in 'DataModule.pas' {DataModule1: TDataModule},
-  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {Form1};
+  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalEstudantes};
 
 {$R *.res}
 
@@ -20,6 +20,6 @@ begin
   Application.CreateForm(TfrmEstudantes, frmEstudantes);
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TModalEstudantes, ModalEstudantes);
   Application.Run;
 end.
