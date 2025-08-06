@@ -21,7 +21,7 @@ Type
     procedure setCPF(aCPF: String);
 
 end;
- var Aluno : TObjectList<TEstudante>;
+var Aluno : TObjectList<TEstudante>;
 implementation
 
 { TEstudantes }

@@ -25,7 +25,7 @@ type
     { Private declarations }
   public
     procedure ExcluirAluno;
-    procedure AdicionarAluno(estudante: TEstudante);
+    procedure AdicionarAluno;
     procedure EditarAluno;
     procedure InicializarGridEstudantes;
 
@@ -43,7 +43,7 @@ implementation
 {$R *.dfm}
 procedure TfrmEstudantes.BtnAdicionarClick(Sender: TObject);
 begin
-  ModalEstudantes.Show;
+  AdicionarAluno;
 end;
 
 procedure TfrmEstudantes.BtnEditarClick(Sender: TObject);
@@ -61,16 +61,15 @@ begin
   InicializarGridEstudantes;
 end;
 
-procedure TfrmEstudantes.AdicionarAluno(estudante: TEstudante);
+procedure TfrmEstudantes.AdicionarAluno;
+var estudante:TEstudante;
 begin
+  ModalEstudantes.ShowModal;
+  Estudante:=Aluno.Last;
   linhaAdicionada := StringGrid1.RowCount.ToString;
   if Estudante.getNomeEstudante = '' then begin
     ShowMessage(' O aluno não pode ser adicionado');
   end;
-  Estudante := TEstudante.Create;
-  Estudante.NomeEstudante := Estudante.getNomeEstudante;
-  Estudante.setCodigo(Estudante.getCodigo);
-  Estudante.setCPF(Estudante.getCPF);
   StringGrid1.Cells[0, linhaAdicionada.ToInteger] := Estudante.getCodigo.ToString;
   StringGrid1.Cells[1, linhaAdicionada.ToInteger] := Estudante.getNomeEstudante;
   StringGrid1.Cells[2, linhaAdicionada.ToInteger] := Estudante.getCPF;
