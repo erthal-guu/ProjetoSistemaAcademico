@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
-  uEstudantes, Data.DB, Vcl.DBGrids,uModalAdicionarEstudante;
+  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudante;
 
 type
   TfrmEstudantes = class(TForm)
@@ -41,6 +41,7 @@ type
 implementation
 
 {$R *.dfm}
+
 procedure TfrmEstudantes.BtnAdicionarClick(Sender: TObject);
 begin
   AdicionarAluno;
@@ -62,57 +63,72 @@ begin
 end;
 
 procedure TfrmEstudantes.AdicionarAluno;
-var estudante:TEstudante;
+var
+  estudante: TEstudante;
 begin
   ModalEstudantes.ShowModal;
-  Estudante:=Aluno.Last;
+  estudante := Alunos.Last;
   linhaAdicionada := StringGrid1.RowCount.ToString;
-  if Estudante.getNomeEstudante = '' then begin
+  if estudante.getNomeEstudante = '' then
+  begin
     ShowMessage(' O aluno não pode ser adicionado');
   end;
-  StringGrid1.Cells[0, linhaAdicionada.ToInteger] := Estudante.getCodigo.ToString;
-  StringGrid1.Cells[1, linhaAdicionada.ToInteger] := Estudante.getNomeEstudante;
-  StringGrid1.Cells[2, linhaAdicionada.ToInteger] := Estudante.getCPF;
-  StringGrid1.RowCount := StringGrid1.RowCount + 1;
-end;
+  if not ((StringGrid1.RowCount = 2) and (StringGrid1.Cells[0,StringGrid1.RowCount] = ''))then Begin
+    StringGrid1.Cells[0, StringGrid1.Row] := estudante.getCodigo.ToString;
+    StringGrid1.Cells[1, StringGrid1.Row] := estudante.getNomeEstudante;
+    StringGrid1.Cells[2, StringGrid1.Row] := estudante.getCPF;
 
-procedure TfrmEstudantes.EditarAluno;
-begin
-  StringGrid1.EditorMode := True;
-  StringGrid1.Options := StringGrid1.Options + [goEditing];
-  ShowMessage('Edição ativada!');
-end;
-
-procedure TfrmEstudantes.ExcluirAluno;
-begin
-  var
-    linhaSelecionada: Integer;
-  begin
-    linhaSelecionada := StringGrid1.Row;
-    if linhaSelecionada = 0 then
-    begin
-      ShowMessage('Você não pode excluir a primeira linha');
-    end;
-    TStringGridAcessor(StringGrid1).DeleteRow(linhaSelecionada);
-
+  end else begin
+    StringGrid1.Cells[0, linhaAdicionada.ToInteger] := estudante.getCodigo.ToString;
+    StringGrid1.Cells[1, linhaAdicionada.ToInteger] := estudante.getNomeEstudante;
+    StringGrid1.Cells[2, linhaAdicionada.ToInteger] := estudante.getCPF;
+    StringGrid1.RowCount := StringGrid1.RowCount + 1;
   end;
 end;
 
+  procedure TfrmEstudantes.EditarAluno;
+  begin
+    if StringGrid1.Row = 0 then
+    begin
+      ShowMessage('Você não pode editar essa linha');
+    end;
+    Sleep(1000);
+    StringGrid1.EditorMode := True;
+    StringGrid1.Options := StringGrid1.Options + [goEditing];
+    ShowMessage('Edição ativada!');
+  end;
 
-procedure TfrmEstudantes.InicializarGridEstudantes;
-begin
-  StringGrid1.RowCount := 1;
-  StringGrid1.Cells[0, 0] := 'Código';
-  StringGrid1.Cells[1, 0] := 'Nome';
-  StringGrid1.Cells[2, 0] := 'CPF';
+  procedure TfrmEstudantes.ExcluirAluno;
+  begin
+    var
+      linhaSelecionada: Integer;
+    begin
+      linhaSelecionada := StringGrid1.Row;
+      if linhaSelecionada = 0 then
+      begin
+        ShowMessage('Você não pode excluir a primeira linha');
+      end;
+      TStringGridAcessor(StringGrid1).DeleteRow(linhaSelecionada);
+    end;
+  end;
 
-  StringGrid1.ColWidths[0] := 280;
-  StringGrid1.ColWidths[1] := 280;
-  StringGrid1.ColWidths[2] := 280;
+  procedure TfrmEstudantes.InicializarGridEstudantes;
+  begin
+    StringGrid1.RowCount := 2;
+    StringGrid1.FixedRows := 1;
 
-  StringGrid1.ColAlignments[0] := TAlignment.taCenter;
-  StringGrid1.ColAlignments[1] := TAlignment.taCenter;
-  StringGrid1.ColAlignments[2] := TAlignment.taCenter;
-end;
+    StringGrid1.Cells[0, 0] := 'Código';
+    StringGrid1.Cells[1, 0] := 'Nome';
+    StringGrid1.Cells[2, 0] := 'CPF';
+
+    StringGrid1.ColWidths[0] := 283;
+    StringGrid1.ColWidths[1] := 284;
+    StringGrid1.ColWidths[2] := 284;
+
+    StringGrid1.ColAlignments[0] := TAlignment.taCenter;
+    StringGrid1.ColAlignments[1] := TAlignment.taCenter;
+    StringGrid1.ColAlignments[2] := TAlignment.taCenter;
+
+  end;
 
 end.

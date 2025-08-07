@@ -20,6 +20,21 @@ object ModalEstudantes: TModalEstudantes
     Height = 416
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = 80
+    ExplicitTop = 8
+    object Label1: TLabel
+      Left = 256
+      Top = 40
+      Width = 190
+      Height = 30
+      Caption = 'Cadastro de Alunos'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold, fsItalic]
+      ParentFont = False
+    end
     object EdtNome: TEdit
       AlignWithMargins = True
       Left = 31
@@ -77,6 +92,8 @@ object ModalEstudantes: TModalEstudantes
       Caption = 'Enviar'
       TabOrder = 3
       OnClick = Button1Click
+      ExplicitLeft = 31
+      ExplicitTop = 290
     end
   end
 end

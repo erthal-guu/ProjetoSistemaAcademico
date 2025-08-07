@@ -21,7 +21,7 @@ Type
     procedure setCPF(aCPF: String);
 
 end;
-var Aluno : TObjectList<TEstudante>;
+var Alunos : TObjectList<TEstudante>;
 implementation
 
 { TEstudantes }
@@ -57,6 +57,6 @@ begin
 end;
 
 initialization
-Aluno := TObjectList<TEstudante>.Create;
+Alunos := TObjectList<TEstudante>.Create;
 
 end.

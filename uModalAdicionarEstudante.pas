@@ -14,6 +14,7 @@ type
     edtCPF: TEdit;
     EdtCodigo: TEdit;
     Button1: TButton;
+    Label1: TLabel;
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
@@ -36,7 +37,7 @@ begin
   Estudante.setCodigo(StrToInt(EdtCodigo.text));
   Estudante.setNomeEstudante(EdtNome.text);
   Estudante.setCPF(edtCPF.text);
-  Aluno.Add(Estudante);
+  Alunos.Add(Estudante);
   ModalEstudantes.Close;
 end;
 
