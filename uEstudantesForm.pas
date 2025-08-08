@@ -16,22 +16,24 @@ type
     BtnEditar: TButton;
     BtnAdicionar: TButton;
     Label1: TLabel;
-    StringGrid1: TStringGrid;
+    GridEstudantes: TStringGrid;
     BtnRemover: TButton;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
-    procedure BtnBaixarArquivoTxtClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
     procedure ExcluirAluno;
     procedure AdicionarAluno;
     procedure EditarAluno;
-    procedure InicializarGridEstudantes;
+    procedure InicializaListaGridEstudantes;
     procedure AdicionaGridNoStringList;
     procedure SalvarTxt;
+    procedure ConfigGraficaEstudantesForm;
+    procedure CarrgearArquivoTxtNoGrid;
 
   end;
 
@@ -52,12 +54,6 @@ begin
   AdicionarAluno;
 end;
 
-procedure TfrmEstudantes.BtnBaixarArquivoTxtClick(Sender: TObject);
-begin
-AdicionaGridNoStringList;
-SalvarTxt;
-end;
-
 procedure TfrmEstudantes.BtnEditarClick(Sender: TObject);
 begin
   EditarAluno;
@@ -68,9 +64,16 @@ begin
   ExcluirAluno;
 end;
 
+procedure TfrmEstudantes.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  SalvarTxt;
+end;
+
 procedure TfrmEstudantes.FormCreate(Sender: TObject);
 begin
-  InicializarGridEstudantes;
+  InicializaListaGridEstudantes;
+  ConfigGraficaEstudantesForm;
+  CarrgearArquivoTxtNoGrid;
 end;
 
 procedure TfrmEstudantes.AdicionaGridNoStringList;
@@ -78,13 +81,11 @@ var
   i: Integer;
   linha: string;
 begin
-  lista := TStringList.Create;
-  for i := 1 to StringGrid1.RowCount - 2 do
-  begin
-    linha := StringGrid1.Cells[0, i] + '|' +
-             StringGrid1.Cells[1, i] + '|' +
-             StringGrid1.Cells[2, i];
-    lista.Add(linha);
+  Lista := TStringList.Create;
+  for i := 1 to GridEstudantes.RowCount - 2 do begin
+    linha := GridEstudantes.Cells[0, i] + '|' + GridEstudantes.Cells[1, i] + '|'
+      + GridEstudantes.Cells[2, i];
+    Lista.Add(linha);
   end;
 end;
 
@@ -100,30 +101,32 @@ begin
     Exit;
   end;
 
-  if (StringGrid1.RowCount <> 2) or (StringGrid1.Cells[0,1] <> '') then begin
-    StringGrid1.RowCount := StringGrid1.RowCount + 1;
+  if (GridEstudantes.RowCount <> 2) or (GridEstudantes.Cells[0, 1] <> '') then begin
+    GridEstudantes.RowCount := GridEstudantes.RowCount + 1;
   end;
 
-  linhaAdicionada := StringGrid1.RowCount.ToString;
-  StringGrid1.Cells[0, StringGrid1.RowCount - 1] := estudante.getCodigo.ToString;
-  StringGrid1.Cells[1, StringGrid1.RowCount - 1] := estudante.getNomeEstudante;
-  StringGrid1.Cells[2, StringGrid1.RowCount - 1] := estudante.getCPF;
+  linhaAdicionada := GridEstudantes.RowCount.ToString;
+  GridEstudantes.Cells[0, GridEstudantes.RowCount - 1] := estudante.getCodigo.ToString;
+  GridEstudantes.Cells[1, GridEstudantes.RowCount - 1] := estudante.getNomeEstudante;
+  GridEstudantes.Cells[2, GridEstudantes.RowCount - 1] := estudante.getCPF;
+//Adicionar o aluno na lista
+
 end;
 
 // Procedure da Configuração de Editar o Aluno
 procedure TfrmEstudantes.EditarAluno;
 begin
-  if StringGrid1.Row = 0 then begin
+  if GridEstudantes.Row = 0 then begin
     ShowMessage('Você não pode editar o cabeçalho.');
     Exit;
   end;
-  if StringGrid1.Cells[1, StringGrid1.Row] = '' then begin
+  if GridEstudantes.Cells[1, GridEstudantes.Row] = '' then begin
     ShowMessage('Não há aluno para editar nesta linha.');
     Exit;
   end;
-  StringGrid1.EditorMode := True;
-  StringGrid1.Options := StringGrid1.Options + [goEditing];
-  ShowMessage('Edição ativada para a linha ' + StringGrid1.Row.ToString);
+  GridEstudantes.EditorMode := True;
+  GridEstudantes.Options := GridEstudantes.Options + [goEditing];
+  ShowMessage('Edição ativada para a linha ' + GridEstudantes.Row.ToString);
 end;
 
 // Procedure da Configuração de Excluir o Aluno
@@ -133,45 +136,51 @@ begin
     linhaSelecionada: Integer;
 
   begin
-    linhaSelecionada := StringGrid1.Row;
+    linhaSelecionada := GridEstudantes.Row;
     if (linhaSelecionada = 0) or (linhaSelecionada = 1) then begin
-    exit;
+      Exit;
     end;
-    TStringGridAcessor(StringGrid1).DeleteRow(linhaSelecionada);
+    TStringGridAcessor(GridEstudantes).DeleteRow(linhaSelecionada);
   end;
 end;
-
-
-
-procedure TfrmEstudantes.InicializarGridEstudantes;
+// Procedure de Carregar O Arquivo.txt no grid
+procedure TfrmEstudantes.CarrgearArquivoTxtNoGrid;
+ var teste : Integer;
 begin
-
-//Configurações gráficas do StringGrid
-  StringGrid1.RowCount := 2;
-  StringGrid1.FixedRows := 1;
-
-  StringGrid1.Cells[0, 0] := 'Código';
-  StringGrid1.Cells[1, 0] := 'Nome';
-  StringGrid1.Cells[2, 0] := 'CPF';
-
-  StringGrid1.ColWidths[0] := 405;
-  StringGrid1.ColWidths[1] := 405;
-  StringGrid1.ColWidths[2] := 361;
-
-  StringGrid1.ColAlignments[0] := TAlignment.taCenter;
-  StringGrid1.ColAlignments[1] := TAlignment.taCenter;
-  StringGrid1.ColAlignments[2] := TAlignment.taCenter;
-
-  Lista := TStringList.Create;
-  lista.LoadFromFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
-
+  Lista.LoadFromFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
+  teste := Lista.Count;
+  ShowMessage('lista ' + Lista.Count.ToString);
 
 end;
+ // Procedure das Configurações Gráficas do StringGrid
+procedure TfrmEstudantes.ConfigGraficaEstudantesForm;
+begin
+  GridEstudantes.RowCount := 2;
+  GridEstudantes.FixedRows := 1;
 
+  GridEstudantes.Cells[0, 0] := 'Código';
+  GridEstudantes.Cells[1, 0] := 'Nome';
+  GridEstudantes.Cells[2, 0] := 'CPF';
+
+  GridEstudantes.ColWidths[0] := 405;
+  GridEstudantes.ColWidths[1] := 405;
+  GridEstudantes.ColWidths[2] := 361;
+
+  GridEstudantes.ColAlignments[0] := TAlignment.taCenter;
+  GridEstudantes.ColAlignments[1] := TAlignment.taCenter;
+  GridEstudantes.ColAlignments[2] := TAlignment.taCenter;
+end;
+// Inicializa a Criação da String list
+procedure TfrmEstudantes.InicializaListaGridEstudantes;
+begin
+  Lista := TStringList.Create;
+end;
+// Salva o arquivo.txt
 procedure TfrmEstudantes.SalvarTxt;
 begin
-  lista.SaveToFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
+  Lista.SaveToFile
+    ('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
+    ShowMessage('Arquivo de Alunos Baixado com Sucesso');
 end;
-
 
 end.

@@ -3,7 +3,7 @@ object frmEstudantes: TfrmEstudantes
   Top = 0
   Caption = 'Estudantes'
   ClientHeight = 851
-  ClientWidth = 1260
+  ClientWidth = 1265
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,16 +12,18 @@ object frmEstudantes: TfrmEstudantes
   Font.Style = []
   Position = poDesktopCenter
   StyleName = 'Windows'
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1260
+    Width = 1265
     Height = 851
     Align = alClient
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1260
     object Label1: TLabel
       Left = 512
       Top = 43
@@ -39,13 +41,14 @@ object frmEstudantes: TfrmEstudantes
       AlignWithMargins = True
       Left = 4
       Top = 723
-      Width = 1252
+      Width = 1257
       Height = 77
       Margins.Bottom = 50
       Align = alBottom
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1252
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 832
@@ -67,8 +70,9 @@ object frmEstudantes: TfrmEstudantes
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 0
-        StyleName = 'Windows10 SlateGray'
+        StyleName = 'Windows'
         OnClick = BtnEditarClick
+        ExplicitTop = 18
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -88,7 +92,7 @@ object frmEstudantes: TfrmEstudantes
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
         TabOrder = 1
-        StyleName = 'Windows10 SlateGray'
+        StyleName = 'Windows'
         OnClick = BtnAdicionarClick
       end
       object BtnRemover: TButton
@@ -111,15 +115,15 @@ object frmEstudantes: TfrmEstudantes
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
         TabOrder = 2
-        StyleName = 'Windows10 SlateGray'
+        StyleName = 'Windows'
         OnClick = BtnRemoverClick
       end
     end
-    object StringGrid1: TStringGrid
+    object GridEstudantes: TStringGrid
       AlignWithMargins = True
       Left = 41
       Top = 101
-      Width = 1178
+      Width = 1183
       Height = 619
       Margins.Left = 40
       Margins.Top = 100
@@ -143,6 +147,7 @@ object frmEstudantes: TfrmEstudantes
       ShowHint = False
       TabOrder = 1
       StyleName = 'Windows'
+      ExplicitWidth = 1178
     end
   end
 end
