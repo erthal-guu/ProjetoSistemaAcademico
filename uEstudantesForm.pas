@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
-  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudante;
+  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudante,
+  System.Generics.Collections;
 
 type
   TfrmEstudantes = class(TForm)
@@ -29,12 +30,14 @@ type
     procedure AdicionarAluno;
     procedure EditarAluno;
     procedure InicializarGridEstudantes;
+    procedure AdicionaGridNoStringList;
 
   end;
 
 var
   frmEstudantes: TfrmEstudantes;
   linhaAdicionada: String;
+  Lista: TStringList;
 
 type
   TStringGridAcessor = class(TStringGrid);
@@ -63,45 +66,47 @@ begin
   InicializarGridEstudantes;
 end;
 
+procedure TfrmEstudantes.AdicionaGridNoStringList;
+var linha : TStringList;
+begin
+
+end;
+
+// Procedure da Configuração de Adicionar o Aluno
 procedure TfrmEstudantes.AdicionarAluno;
 var
   estudante: TEstudante;
 begin
   ModalEstudantes.ShowModal;
   estudante := Alunos.Last;
-
   if estudante.getNomeEstudante = '' then begin
     ShowMessage('O aluno não pode ser adicionado');
     Exit;
   end;
-
   linhaAdicionada := StringGrid1.RowCount.ToString;
-
-  StringGrid1.Cells[0, StringGrid1.RowCount - 1] :=
-    estudante.getCodigo.ToString;
+  StringGrid1.Cells[0, StringGrid1.RowCount - 1] := estudante.getCodigo.ToString;
   StringGrid1.Cells[1, StringGrid1.RowCount - 1] := estudante.getNomeEstudante;
   StringGrid1.Cells[2, StringGrid1.RowCount - 1] := estudante.getCPF;
   StringGrid1.RowCount := StringGrid1.RowCount + 1;
 end;
 
+// Procedure da Configuração de Editar o Aluno
 procedure TfrmEstudantes.EditarAluno;
 begin
   if StringGrid1.Row = 0 then begin
     ShowMessage('Você não pode editar o cabeçalho.');
     Exit;
   end;
-
   if StringGrid1.Cells[1, StringGrid1.Row] = '' then begin
     ShowMessage('Não há aluno para editar nesta linha.');
     Exit;
   end;
-
   StringGrid1.EditorMode := True;
   StringGrid1.Options := StringGrid1.Options + [goEditing];
-
   ShowMessage('Edição ativada para a linha ' + StringGrid1.Row.ToString);
 end;
 
+// Procedure da Configuração de Excluir o Aluno
 procedure TfrmEstudantes.ExcluirAluno;
 begin
   var
@@ -116,8 +121,12 @@ begin
   end;
 end;
 
+
+
 procedure TfrmEstudantes.InicializarGridEstudantes;
 begin
+
+//Configurações gráficas do StringGrid
   StringGrid1.RowCount := 2;
   StringGrid1.FixedRows := 1;
 
@@ -125,13 +134,16 @@ begin
   StringGrid1.Cells[1, 0] := 'Nome';
   StringGrid1.Cells[2, 0] := 'CPF';
 
-  StringGrid1.ColWidths[0] := 285;
-  StringGrid1.ColWidths[1] := 285;
-  StringGrid1.ColWidths[2] := 285;
+  StringGrid1.ColWidths[0] := 405;
+  StringGrid1.ColWidths[1] := 405;
+  StringGrid1.ColWidths[2] := 361;
 
   StringGrid1.ColAlignments[0] := TAlignment.taCenter;
   StringGrid1.ColAlignments[1] := TAlignment.taCenter;
   StringGrid1.ColAlignments[2] := TAlignment.taCenter;
+
+  Lista := TStringList.Create;
+
 
 end;
 

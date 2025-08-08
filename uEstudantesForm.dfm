@@ -3,7 +3,7 @@ object frmEstudantes: TfrmEstudantes
   Top = 0
   Caption = 'Estudantes'
   ClientHeight = 851
-  ClientWidth = 1208
+  ClientWidth = 1259
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object frmEstudantes: TfrmEstudantes
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1208
+    Width = 1259
     Height = 851
     Align = alClient
     ParentBackground = False
@@ -24,7 +24,7 @@ object frmEstudantes: TfrmEstudantes
     ExplicitTop = 8
     ExplicitWidth = 1186
     object Label1: TLabel
-      Left = 496
+      Left = 512
       Top = 43
       Width = 203
       Height = 40
@@ -40,7 +40,7 @@ object frmEstudantes: TfrmEstudantes
       AlignWithMargins = True
       Left = 4
       Top = 723
-      Width = 1200
+      Width = 1251
       Height = 77
       Margins.Bottom = 50
       Align = alBottom
@@ -51,17 +51,16 @@ object frmEstudantes: TfrmEstudantes
       ExplicitWidth = 892
       object BtnEditar: TButton
         AlignWithMargins = True
-        Left = 600
+        Left = 832
         Top = 10
-        Width = 275
+        Width = 385
         Height = 57
-        Margins.Left = 8
+        Margins.Left = 10
         Margins.Top = 10
-        Margins.Right = 10
+        Margins.Right = 40
         Margins.Bottom = 10
         Align = alLeft
         Caption = 'Editar'
-        Default = True
         DoubleBuffered = True
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -72,20 +71,19 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 0
         OnClick = BtnEditarClick
+        ExplicitTop = 7
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
-        Left = 18
+        Left = 35
         Top = 10
-        Width = 275
+        Width = 385
         Height = 57
-        Margins.Left = 18
+        Margins.Left = 35
         Margins.Top = 10
-        Margins.Right = 8
         Margins.Bottom = 10
         Align = alLeft
         Caption = 'Adicionar'
-        Default = True
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -94,21 +92,21 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 1
         OnClick = BtnAdicionarClick
+        ExplicitLeft = 40
       end
       object BtnRemover: TButton
         AlignWithMargins = True
-        Left = 309
+        Left = 433
         Top = 10
-        Width = 275
+        Width = 385
         Height = 57
         Cursor = crHandPoint
-        Margins.Left = 8
+        Margins.Left = 10
         Margins.Top = 10
-        Margins.Right = 8
+        Margins.Right = 4
         Margins.Bottom = 10
         Align = alLeft
         Caption = 'Remover'
-        Default = True
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -117,17 +115,21 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 2
         OnClick = BtnRemoverClick
+        ExplicitLeft = 426
+        ExplicitTop = 7
       end
     end
     object StringGrid1: TStringGrid
       AlignWithMargins = True
-      Left = 4
+      Left = 41
       Top = 101
-      Width = 1200
-      Height = 540
+      Width = 1177
+      Height = 539
+      Margins.Left = 40
       Margins.Top = 100
+      Margins.Right = 40
+      Margins.Bottom = 0
       Align = alClient
-      BorderStyle = bsNone
       ColCount = 3
       FixedColor = clWhite
       FixedCols = 0
@@ -145,20 +147,21 @@ object frmEstudantes: TfrmEstudantes
       ShowHint = False
       TabOrder = 1
       StyleName = 'Windows'
-      ExplicitTop = 112
-      ExplicitHeight = 389
+      ExplicitHeight = 484
     end
     object BtnBaixarArquivoTxt: TButton
       AlignWithMargins = True
-      Left = 4
-      Top = 647
-      Width = 1200
-      Height = 33
+      Left = 41
+      Top = 640
+      Width = 1177
+      Height = 40
       Cursor = crHelp
+      Margins.Left = 40
+      Margins.Top = 0
+      Margins.Right = 40
       Margins.Bottom = 40
       Align = alBottom
       Caption = 'Baixar o Arquivo.txt'
-      Default = True
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -167,8 +170,6 @@ object frmEstudantes: TfrmEstudantes
       ParentFont = False
       TabOrder = 2
       TabStop = False
-      ExplicitLeft = 23
-      ExplicitWidth = 1163
     end
   end
 end
