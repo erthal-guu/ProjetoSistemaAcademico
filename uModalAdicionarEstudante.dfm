@@ -12,6 +12,7 @@ object ModalEstudantes: TModalEstudantes
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
@@ -20,8 +21,6 @@ object ModalEstudantes: TModalEstudantes
     Height = 416
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 80
-    ExplicitTop = 8
     object Label1: TLabel
       Left = 256
       Top = 40
@@ -92,8 +91,6 @@ object ModalEstudantes: TModalEstudantes
       Caption = 'Enviar'
       TabOrder = 3
       OnClick = Button1Click
-      ExplicitLeft = 31
-      ExplicitTop = 290
     end
   end
 end

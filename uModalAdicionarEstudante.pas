@@ -17,7 +17,8 @@ type
     Label1: TLabel;
     procedure Button1Click(Sender: TObject);
   private
-    { Private declarations }
+    procedure LimparEdts;
+    procedure VerificaCamposVazios;
   public
     { Public declarations }
   end;
@@ -39,6 +40,29 @@ begin
   Estudante.setCPF(edtCPF.text);
   Alunos.Add(Estudante);
   ModalEstudantes.Close;
+  LimparEdts;
 end;
+
+procedure TModalEstudantes.LimparEdts;
+begin
+EdtNome.Clear;
+EdtCodigo.Clear;
+EdtCPF.Clear;
+end;
+
+procedure TModalEstudantes.VerificaCamposVazios;
+begin
+  if EdtNome.text = '' then
+    ShowMessage('O campo ( Nome ) não pode estar vazio');
+  if EdtCodigo.text = '' then
+    ShowMessage('O campo ( Código ) não pode estar vazio');
+  if EdtCPF.text = '' then
+    ShowMessage('O campo ( CPF )não pode estar vazio');
+  if (EdtNome.text = '') and (EdtCodigo.text = '') and (EdtCPF.text = '' ) then begin
+      ShowMessage('Todos os Campos estão Vazios');
+end;
+
+end;
+
 
 end.

@@ -3,26 +3,25 @@ object frmEstudantes: TfrmEstudantes
   Top = 0
   Caption = 'Estudantes'
   ClientHeight = 851
-  ClientWidth = 1259
+  ClientWidth = 1260
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
+  StyleName = 'Windows'
   OnCreate = FormCreate
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1259
+    Width = 1260
     Height = 851
     Align = alClient
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 160
-    ExplicitTop = 8
-    ExplicitWidth = 1186
     object Label1: TLabel
       Left = 512
       Top = 43
@@ -40,15 +39,13 @@ object frmEstudantes: TfrmEstudantes
       AlignWithMargins = True
       Left = 4
       Top = 723
-      Width = 1251
+      Width = 1252
       Height = 77
       Margins.Bottom = 50
       Align = alBottom
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 512
-      ExplicitWidth = 892
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 832
@@ -70,8 +67,8 @@ object frmEstudantes: TfrmEstudantes
         ParentDoubleBuffered = False
         ParentFont = False
         TabOrder = 0
+        StyleName = 'Windows10 SlateGray'
         OnClick = BtnEditarClick
-        ExplicitTop = 7
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -91,8 +88,8 @@ object frmEstudantes: TfrmEstudantes
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
         TabOrder = 1
+        StyleName = 'Windows10 SlateGray'
         OnClick = BtnAdicionarClick
-        ExplicitLeft = 40
       end
       object BtnRemover: TButton
         AlignWithMargins = True
@@ -114,17 +111,16 @@ object frmEstudantes: TfrmEstudantes
         Font.Style = [fsBold, fsItalic]
         ParentFont = False
         TabOrder = 2
+        StyleName = 'Windows10 SlateGray'
         OnClick = BtnRemoverClick
-        ExplicitLeft = 426
-        ExplicitTop = 7
       end
     end
     object StringGrid1: TStringGrid
       AlignWithMargins = True
       Left = 41
       Top = 101
-      Width = 1177
-      Height = 539
+      Width = 1178
+      Height = 619
       Margins.Left = 40
       Margins.Top = 100
       Margins.Right = 40
@@ -147,29 +143,6 @@ object frmEstudantes: TfrmEstudantes
       ShowHint = False
       TabOrder = 1
       StyleName = 'Windows'
-      ExplicitHeight = 484
-    end
-    object BtnBaixarArquivoTxt: TButton
-      AlignWithMargins = True
-      Left = 41
-      Top = 640
-      Width = 1177
-      Height = 40
-      Cursor = crHelp
-      Margins.Left = 40
-      Margins.Top = 0
-      Margins.Right = 40
-      Margins.Bottom = 40
-      Align = alBottom
-      Caption = 'Baixar o Arquivo.txt'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Arial'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 2
-      TabStop = False
     end
   end
 end

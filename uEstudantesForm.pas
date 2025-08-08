@@ -18,11 +18,11 @@ type
     Label1: TLabel;
     StringGrid1: TStringGrid;
     BtnRemover: TButton;
-    BtnBaixarArquivoTxt: TButton;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
+    procedure BtnBaixarArquivoTxtClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,6 +31,7 @@ type
     procedure EditarAluno;
     procedure InicializarGridEstudantes;
     procedure AdicionaGridNoStringList;
+    procedure SalvarTxt;
 
   end;
 
@@ -49,6 +50,12 @@ implementation
 procedure TfrmEstudantes.BtnAdicionarClick(Sender: TObject);
 begin
   AdicionarAluno;
+end;
+
+procedure TfrmEstudantes.BtnBaixarArquivoTxtClick(Sender: TObject);
+begin
+AdicionaGridNoStringList;
+SalvarTxt;
 end;
 
 procedure TfrmEstudantes.BtnEditarClick(Sender: TObject);
@@ -72,13 +79,11 @@ var
   linha: string;
 begin
   lista := TStringList.Create;
-
   for i := 1 to StringGrid1.RowCount - 2 do
   begin
     linha := StringGrid1.Cells[0, i] + '|' +
              StringGrid1.Cells[1, i] + '|' +
              StringGrid1.Cells[2, i];
-
     lista.Add(linha);
   end;
 end;
@@ -94,11 +99,15 @@ begin
     ShowMessage('O aluno não pode ser adicionado');
     Exit;
   end;
+
+  if (StringGrid1.RowCount <> 2) or (StringGrid1.Cells[0,1] <> '') then begin
+    StringGrid1.RowCount := StringGrid1.RowCount + 1;
+  end;
+
   linhaAdicionada := StringGrid1.RowCount.ToString;
   StringGrid1.Cells[0, StringGrid1.RowCount - 1] := estudante.getCodigo.ToString;
   StringGrid1.Cells[1, StringGrid1.RowCount - 1] := estudante.getNomeEstudante;
   StringGrid1.Cells[2, StringGrid1.RowCount - 1] := estudante.getCPF;
-  StringGrid1.RowCount := StringGrid1.RowCount + 1;
 end;
 
 // Procedure da Configuração de Editar o Aluno
@@ -125,8 +134,8 @@ begin
 
   begin
     linhaSelecionada := StringGrid1.Row;
-    if linhaSelecionada = 0 then begin
-      ShowMessage('Você não pode excluir a primeira linha');
+    if (linhaSelecionada = 0) or (linhaSelecionada = 1) then begin
+    exit;
     end;
     TStringGridAcessor(StringGrid1).DeleteRow(linhaSelecionada);
   end;
@@ -154,8 +163,15 @@ begin
   StringGrid1.ColAlignments[2] := TAlignment.taCenter;
 
   Lista := TStringList.Create;
+  lista.LoadFromFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
 
 
 end;
+
+procedure TfrmEstudantes.SalvarTxt;
+begin
+  lista.SaveToFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
+end;
+
 
 end.
