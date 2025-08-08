@@ -67,9 +67,20 @@ begin
 end;
 
 procedure TfrmEstudantes.AdicionaGridNoStringList;
-var linha : TStringList;
+var
+  i: Integer;
+  linha: string;
 begin
+  lista := TStringList.Create;
 
+  for i := 1 to StringGrid1.RowCount - 2 do
+  begin
+    linha := StringGrid1.Cells[0, i] + '|' +
+             StringGrid1.Cells[1, i] + '|' +
+             StringGrid1.Cells[2, i];
+
+    lista.Add(linha);
+  end;
 end;
 
 // Procedure da Configuração de Adicionar o Aluno
