@@ -3,8 +3,8 @@ object frmEstudantes: TfrmEstudantes
   Top = 0
   Caption = 'Estudantes'
   ClientHeight = 851
-  ClientWidth = 1186
-  Color = clBtnFace
+  ClientWidth = 1208
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -13,15 +13,19 @@ object frmEstudantes: TfrmEstudantes
   OnCreate = FormCreate
   TextHeight = 15
   object Panel1: TPanel
-    Left = 152
-    Top = 24
-    Width = 900
-    Height = 700
+    Left = 0
+    Top = 0
+    Width = 1208
+    Height = 851
+    Align = alClient
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 160
+    ExplicitTop = 8
+    ExplicitWidth = 1186
     object Label1: TLabel
-      Left = 336
-      Top = 139
+      Left = 496
+      Top = 43
       Width = 203
       Height = 40
       Caption = 'Lista de Aluno '
@@ -35,15 +39,16 @@ object frmEstudantes: TfrmEstudantes
     object PnlButton: TPanel
       AlignWithMargins = True
       Left = 4
-      Top = 512
-      Width = 892
+      Top = 723
+      Width = 1200
       Height = 77
-      Margins.Bottom = 110
+      Margins.Bottom = 50
       Align = alBottom
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = -12
+      ExplicitTop = 512
+      ExplicitWidth = 892
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 600
@@ -67,7 +72,6 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 0
         OnClick = BtnEditarClick
-        ExplicitLeft = 586
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -90,8 +94,6 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 1
         OnClick = BtnAdicionarClick
-        ExplicitLeft = 20
-        ExplicitTop = 19
       end
       object BtnRemover: TButton
         AlignWithMargins = True
@@ -115,17 +117,17 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 2
         OnClick = BtnRemoverClick
-        ExplicitLeft = 299
       end
     end
     object StringGrid1: TStringGrid
       AlignWithMargins = True
-      Left = 22
-      Top = 228
-      Width = 857
-      Height = 273
+      Left = 4
+      Top = 101
+      Width = 1200
+      Height = 540
       Margins.Top = 100
-      Margins.Bottom = 20
+      Align = alClient
+      BorderStyle = bsNone
       ColCount = 3
       FixedColor = clWhite
       FixedCols = 0
@@ -143,6 +145,30 @@ object frmEstudantes: TfrmEstudantes
       ShowHint = False
       TabOrder = 1
       StyleName = 'Windows'
+      ExplicitTop = 112
+      ExplicitHeight = 389
+    end
+    object BtnBaixarArquivoTxt: TButton
+      AlignWithMargins = True
+      Left = 4
+      Top = 647
+      Width = 1200
+      Height = 33
+      Cursor = crHelp
+      Margins.Bottom = 40
+      Align = alBottom
+      Caption = 'Baixar o Arquivo.txt'
+      Default = True
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      TabStop = False
+      ExplicitLeft = 23
+      ExplicitWidth = 1163
     end
   end
 end
