@@ -23,7 +23,6 @@ object frmEstudantes: TfrmEstudantes
     Align = alClient
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1260
     object Label1: TLabel
       Left = 512
       Top = 43
@@ -48,7 +47,6 @@ object frmEstudantes: TfrmEstudantes
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1252
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 832
@@ -72,7 +70,6 @@ object frmEstudantes: TfrmEstudantes
         TabOrder = 0
         StyleName = 'Windows'
         OnClick = BtnEditarClick
-        ExplicitTop = 18
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -147,7 +144,6 @@ object frmEstudantes: TfrmEstudantes
       ShowHint = False
       TabOrder = 1
       StyleName = 'Windows'
-      ExplicitWidth = 1178
     end
   end
 end

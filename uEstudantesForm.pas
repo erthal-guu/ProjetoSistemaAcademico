@@ -33,7 +33,7 @@ type
     procedure AdicionaGridNoStringList;
     procedure SalvarTxt;
     procedure ConfigGraficaEstudantesForm;
-    procedure CarrgearArquivoTxtNoGrid;
+    procedure CarregaArquivoTxtNoGrid;
 
   end;
 
@@ -73,7 +73,7 @@ procedure TfrmEstudantes.FormCreate(Sender: TObject);
 begin
   InicializaListaGridEstudantes;
   ConfigGraficaEstudantesForm;
-  CarrgearArquivoTxtNoGrid;
+  CarregaArquivoTxtNoGrid;
 end;
 
 procedure TfrmEstudantes.AdicionaGridNoStringList;
@@ -95,7 +95,7 @@ var
   estudante: TEstudante;
 begin
   ModalEstudantes.ShowModal;
-  estudante := Alunos.Last;
+    estudante := Alunos.Last;
   if estudante.getNomeEstudante = '' then begin
     ShowMessage('O aluno não pode ser adicionado');
     Exit;
@@ -109,7 +109,6 @@ begin
   GridEstudantes.Cells[0, GridEstudantes.RowCount - 1] := estudante.getCodigo.ToString;
   GridEstudantes.Cells[1, GridEstudantes.RowCount - 1] := estudante.getNomeEstudante;
   GridEstudantes.Cells[2, GridEstudantes.RowCount - 1] := estudante.getCPF;
-//Adicionar o aluno na lista
 
 end;
 
@@ -144,10 +143,10 @@ begin
   end;
 end;
 // Procedure de Carregar O Arquivo.txt no grid
-procedure TfrmEstudantes.CarrgearArquivoTxtNoGrid;
+procedure TfrmEstudantes.CarregaArquivoTxtNoGrid;
  var teste : Integer;
 begin
-  Lista.LoadFromFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
+//  Lista.LoadFromFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
   teste := Lista.Count;
   ShowMessage('lista ' + Lista.Count.ToString);
 
@@ -173,14 +172,18 @@ end;
 // Inicializa a Criação da String list
 procedure TfrmEstudantes.InicializaListaGridEstudantes;
 begin
-  Lista := TStringList.Create;
+ lista := TStringList.Create;
 end;
 // Salva o arquivo.txt
 procedure TfrmEstudantes.SalvarTxt;
 begin
-  Lista.SaveToFile
-    ('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\aluno.txt');
-    ShowMessage('Arquivo de Alunos Baixado com Sucesso');
+  AdicionaGridNoStringList;
+if (GridEstudantes.RowCount <= 1) or (GridEstudantes.Cells[0, 1] = '') then
+begin
+  ShowMessage('Impossivel baixar o Arquivo de Alunos, Não a dados na lista !');
+end else begin
+  Lista.SaveToFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\arquivos\ListaDeAlunos.txt');
+  ShowMessage('Arquivo de Alunos Baixado com Sucesso !');
 end;
-
+end;
 end.

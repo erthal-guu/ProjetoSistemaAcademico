@@ -18,9 +18,9 @@ type
     procedure Button1Click(Sender: TObject);
   private
     procedure LimparEdts;
-    procedure VerificaCamposVazios;
+    function VerificaCamposVazios : Boolean;
   public
-    { Public declarations }
+
   end;
 
 var
@@ -34,35 +34,55 @@ procedure TModalEstudantes.Button1Click(Sender: TObject);
 var
   Estudante: TEstudante;
 begin
-  Estudante := TEstudante.Create;
-  Estudante.setCodigo(StrToInt(EdtCodigo.text));
-  Estudante.setNomeEstudante(EdtNome.text);
-  Estudante.setCPF(edtCPF.text);
-  Alunos.Add(Estudante);
-  ModalEstudantes.Close;
-  LimparEdts;
+  if not VerificaCamposVazios then begin
+    try
+      Estudante := TEstudante.Create;
+      Estudante.setCodigo(StrToInt(Trim(EdtCodigo.text)));
+      Estudante.setNomeEstudante(Trim(EdtNome.text));
+      Estudante.setCPF(Trim(edtCPF.text));
+
+      if Assigned(Alunos) then begin
+        Alunos.Add(Estudante);
+      end else begin
+        ShowMessage('A lista de alunos não foi inicializada!');
+        Estudante.Free;
+      end;
+    finally
+    end;
+
+    ModalEstudantes.Close;
+    LimparEdts;
+  end;
 end;
 
 procedure TModalEstudantes.LimparEdts;
 begin
-EdtNome.Clear;
-EdtCodigo.Clear;
-EdtCPF.Clear;
+  EdtNome.Clear;
+  EdtCodigo.Clear;
+  edtCPF.Clear;
 end;
 
-procedure TModalEstudantes.VerificaCamposVazios;
+Function TModalEstudantes.VerificaCamposVazios: Boolean;
 begin
-  if EdtNome.text = '' then
+  Result := False;
+
+  if Trim(EdtNome.text) = '' then begin
     ShowMessage('O campo ( Nome ) não pode estar vazio');
-  if EdtCodigo.text = '' then
+    Result := True;
+    Exit;
+  end;
+
+  if Trim(EdtCodigo.text) = '' then begin
     ShowMessage('O campo ( Código ) não pode estar vazio');
-  if EdtCPF.text = '' then
-    ShowMessage('O campo ( CPF )não pode estar vazio');
-  if (EdtNome.text = '') and (EdtCodigo.text = '') and (EdtCPF.text = '' ) then begin
-      ShowMessage('Todos os Campos estão Vazios');
-end;
+    Result := True;
+    Exit;
+  end;
 
+  if Trim(edtCPF.text) = '' then begin
+    ShowMessage('O campo ( CPF ) não pode estar vazio');
+    Result := True;
+    Exit;
+  end;
 end;
-
 
 end.

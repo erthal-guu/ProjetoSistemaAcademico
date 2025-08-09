@@ -12,7 +12,7 @@ object ModalEstudantes: TModalEstudantes
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDesktopCenter
+  Position = poDefaultSizeOnly
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
