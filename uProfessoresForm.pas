@@ -1,4 +1,4 @@
-unit uEstudantesForm;
+unit uProfessoresForm;
 
 interface
 
@@ -27,13 +27,13 @@ type
   private
     { Private declarations }
   public
-    procedure ExcluirAluno;
-    procedure AdicionarAluno;
-    procedure EditarAluno;
-    procedure InicializaListaGridEstudantes;
+    procedure ExcluirProfessor;
+    procedure AdicionarProfessor;
+    procedure EditarProfessor;
+    procedure InicializaListaGridProfessores;
     procedure AdicionaGridNoStringList;
     procedure SalvarTxt;
-    procedure ConfigGraficaEstudantesForm;
+    procedure ConfigGraficaProfessoresForm;
     procedure CarregaArquivoTxtNoGrid;
   end;
 
@@ -51,17 +51,17 @@ implementation
 
 procedure TfrmEstudantes.BtnAdicionarClick(Sender: TObject);
 begin
-  AdicionarAluno;
+  AdicionarProfessor;
 end;
 
 procedure TfrmEstudantes.BtnEditarClick(Sender: TObject);
 begin
-  EditarAluno;
+  EditarProfessor;
 end;
 
 procedure TfrmEstudantes.BtnRemoverClick(Sender: TObject);
 begin
-  ExcluirAluno;
+  ExcluirProfessor;
 end;
 
 procedure TfrmEstudantes.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -71,8 +71,8 @@ end;
 
 procedure TfrmEstudantes.FormCreate(Sender: TObject);
 begin
-  InicializaListaGridEstudantes;
-  ConfigGraficaEstudantesForm;
+  InicializaListaGridProfessores;
+  ConfigGraficaProfessoresForm;
   CarregaArquivoTxtNoGrid;
 end;
 // Procedure Usada para pegas os dados do grid e jogar para um Stringlist
@@ -91,7 +91,7 @@ begin
 end;
 
 // Procedure da Configuração de Adicionar o Aluno
-procedure TfrmEstudantes.AdicionarAluno;
+procedure TfrmEstudantes.AdicionarProfessor;
 var
   estudante: TEstudante;
   countLista: Integer;
@@ -132,7 +132,7 @@ begin
 end;
 
 // Procedure da Configuração de Editar o Aluno
-procedure TfrmEstudantes.EditarAluno;
+procedure TfrmEstudantes.EditarProfessor;
 begin
   if GridEstudantes.Row = 0 then
   begin
@@ -152,7 +152,7 @@ begin
 end;
 
 // Procedure da Configuração de Excluir o Aluno
-procedure TfrmEstudantes.ExcluirAluno;
+procedure TfrmEstudantes.ExcluirProfessor;
 var
   linhaSelecionada: Integer;
 begin
@@ -203,7 +203,7 @@ begin
 end;
 
 // Procedure das Configurações Gráficas do StringGrid
-procedure TfrmEstudantes.ConfigGraficaEstudantesForm;
+procedure TfrmEstudantes.ConfigGraficaProfessoresForm;
 begin
   GridEstudantes.RowCount := 2;
   GridEstudantes.FixedRows := 1;
@@ -222,7 +222,7 @@ begin
 end;
 
 // Inicializa a Criação da String list
-procedure TfrmEstudantes.InicializaListaGridEstudantes;
+procedure TfrmEstudantes.InicializaListaGridProfessores;
 begin
   ListaStrings := TStringList.Create;
 end;

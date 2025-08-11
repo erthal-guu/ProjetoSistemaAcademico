@@ -1,6 +1,7 @@
 unit uProfessores;
 
 interface
+uses System.Generics.Collections;
 
 // Criação da Classe de Professores
 Type
@@ -16,7 +17,7 @@ Type
     Function getCPF: String;
     procedure setCPF(aCPF: String);
   end;
-
+var  ListaProfessores : TObjectList<TProfessores>;
 implementation
 
 { TProfessores }
@@ -40,5 +41,7 @@ procedure TProfessores.setNomeProfessores(aNomeProfessores: String);
 begin
   Self.NomeProfessores := aNomeProfessores;
 end;
+initialization
+ListaProfessores := TObjectList<TProfessores>.Create;
 
 end.

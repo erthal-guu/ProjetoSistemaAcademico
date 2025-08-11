@@ -12,7 +12,8 @@ uses
   DataModule in 'DataModule.pas' {DataModule1: TDataModule},
   uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalEstudantes},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  uProfessoresForm in 'uProfessoresForm.pas' {ProfessoresForm};
 
 {$R *.res}
 
@@ -24,5 +25,6 @@ begin
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TModalEstudantes, ModalEstudantes);
+  Application.CreateForm(TProfessoresForm, ProfessoresForm);
   Application.Run;
 end.

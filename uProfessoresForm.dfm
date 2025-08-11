@@ -1,30 +1,25 @@
-object frmEstudantes: TfrmEstudantes
+object ProfessoresForm: TProfessoresForm
   Left = 0
   Top = 0
-  Caption = 'Estudantes'
-  ClientHeight = 851
-  ClientWidth = 1265
-  Color = clWhite
+  Caption = 'ProfessoresForm'
+  ClientHeight = 801
+  ClientWidth = 1271
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDesktopCenter
-  StyleName = 'Windows'
-  OnClose = FormClose
-  OnCreate = FormCreate
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
-    Top = 0
-    Width = 1265
+    Top = -50
+    Width = 1271
     Height = 851
     Align = alBottom
     Color = clInactiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = -8
     object Label1: TLabel
       Left = 528
       Top = 28
@@ -42,7 +37,7 @@ object frmEstudantes: TfrmEstudantes
       AlignWithMargins = True
       Left = 28
       Top = 567
-      Width = 1209
+      Width = 1215
       Height = 113
       Margins.Left = 27
       Margins.Right = 27
@@ -52,7 +47,8 @@ object frmEstudantes: TfrmEstudantes
       Color = clLightslategray
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 560
+      ExplicitLeft = 41
+      ExplicitTop = 631
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 816
@@ -75,9 +71,6 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 0
         StyleName = 'Windows'
-        OnClick = BtnEditarClick
-        ExplicitTop = 28
-        ExplicitHeight = 100
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -99,9 +92,6 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 1
         StyleName = 'Windows'
-        OnClick = BtnAdicionarClick
-        ExplicitTop = 28
-        ExplicitHeight = 100
       end
       object BtnRemover: TButton
         AlignWithMargins = True
@@ -124,16 +114,12 @@ object frmEstudantes: TfrmEstudantes
         ParentFont = False
         TabOrder = 2
         StyleName = 'Windows'
-        OnClick = BtnRemoverClick
-        ExplicitLeft = 394
-        ExplicitTop = 0
-        ExplicitHeight = 120
       end
     end
     object PnlGridEstudantes: TPanel
       AlignWithMargins = True
-      Left = 28
-      Top = 88
+      Left = 20
+      Top = 96
       Width = 1209
       Height = 481
       Margins.Left = 2
@@ -172,10 +158,8 @@ object frmEstudantes: TfrmEstudantes
         ShowHint = False
         TabOrder = 0
         StyleName = 'Windows'
-        ExplicitLeft = 25
-        ExplicitTop = 61
-        ExplicitWidth = 1127
-        ExplicitHeight = 413
+        ExplicitLeft = 29
+        ExplicitTop = 5
       end
     end
   end

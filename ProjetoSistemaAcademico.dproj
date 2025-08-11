@@ -148,6 +148,10 @@
             <Form>ModalEstudantes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uProfessoresForm.pas">
+            <Form>ProfessoresForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
