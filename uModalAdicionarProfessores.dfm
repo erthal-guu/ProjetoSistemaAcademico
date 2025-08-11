@@ -1,32 +1,29 @@
-object TModalEstudantes: TForm
+object ModalAdicionarProfessores: TModalAdicionarProfessores
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'ModalEstudantes'
-  ClientHeight = 416
-  ClientWidth = 733
+  Caption = 'ModalAdicionarProfessores'
+  ClientHeight = 441
+  ClientWidth = 878
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDefaultSizeOnly
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 733
-    Height = 416
+    Width = 878
+    Height = 441
     Align = alClient
     TabOrder = 0
     object Label1: TLabel
-      Left = 256
+      Left = 312
       Top = 40
-      Width = 190
+      Width = 231
       Height = 30
-      Caption = 'Cadastro de Alunos'
+      Caption = 'Cadastro de Professores'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -38,7 +35,7 @@ object TModalEstudantes: TForm
       AlignWithMargins = True
       Left = 31
       Top = 101
-      Width = 671
+      Width = 816
       Height = 23
       Margins.Left = 30
       Margins.Top = 100
@@ -52,7 +49,7 @@ object TModalEstudantes: TForm
       AlignWithMargins = True
       Left = 31
       Top = 164
-      Width = 671
+      Width = 816
       Height = 23
       Margins.Left = 30
       Margins.Top = 20
@@ -66,8 +63,8 @@ object TModalEstudantes: TForm
     object Button1: TButton
       AlignWithMargins = True
       Left = 21
-      Top = 276
-      Width = 691
+      Top = 301
+      Width = 836
       Height = 79
       Margins.Left = 20
       Margins.Top = 20
@@ -76,7 +73,6 @@ object TModalEstudantes: TForm
       Align = alBottom
       Caption = 'Enviar'
       TabOrder = 2
-      OnClick = Button1Click
     end
   end
 end

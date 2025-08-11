@@ -10,10 +10,11 @@ uses
   uProfessores in 'uProfessores.pas',
   uTurmas in 'uTurmas.pas',
   DataModule in 'DataModule.pas' {DataModule1: TDataModule},
-  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalEstudantes},
   Vcl.Themes,
   Vcl.Styles,
-  uProfessoresForm in 'uProfessoresForm.pas' {ProfessoresForm};
+  uProfessoresForm in 'uProfessoresForm.pas' {ProfessoresForm},
+  uModalAdicionarProfessores in 'uModalAdicionarProfessores.pas' {ModalAdicionarProfessores},
+  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas';
 
 {$R *.res}
 
@@ -25,6 +26,6 @@ begin
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TModalEstudantes, ModalEstudantes);
-  Application.CreateForm(TProfessoresForm, ProfessoresForm);
+  Application.CreateForm(TModalAdicionarProfessores, ModalAdicionarProfessores);
   Application.Run;
 end.

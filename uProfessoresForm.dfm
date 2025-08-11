@@ -47,8 +47,6 @@ object ProfessoresForm: TProfessoresForm
       Color = clLightslategray
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 41
-      ExplicitTop = 631
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 816
@@ -130,7 +128,7 @@ object ProfessoresForm: TProfessoresForm
       Color = clLightsteelblue
       ParentBackground = False
       TabOrder = 1
-      object GridEstudantes: TStringGrid
+      object GridProfessores: TStringGrid
         AlignWithMargins = True
         Left = 21
         Top = 31
@@ -158,8 +156,6 @@ object ProfessoresForm: TProfessoresForm
         ShowHint = False
         TabOrder = 0
         StyleName = 'Windows'
-        ExplicitLeft = 29
-        ExplicitTop = 5
       end
     end
   end

@@ -144,14 +144,15 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="uModalAdicionarEstudante.pas">
-            <Form>ModalEstudantes</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="uProfessoresForm.pas">
             <Form>ProfessoresForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uModalAdicionarProfessores.pas">
+            <Form>ModalAdicionarProfessores</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uModalAdicionarEstudante.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -6,19 +6,16 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
-  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudante,
-  System.Generics.Collections;
-
+  System.Generics.Collections, uProfessores;
 type
-  TfrmEstudantes = class(TForm)
+  TProfessoresForm = class(TForm)
     Panel1: TPanel;
     PnlButton: TPanel;
     BtnEditar: TButton;
     BtnAdicionar: TButton;
     Label1: TLabel;
     BtnRemover: TButton;
-    PnlGridEstudantes: TPanel;
-    GridEstudantes: TStringGrid;
+    GridProfessores: TStringGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
@@ -38,7 +35,7 @@ type
   end;
 
 var
-  frmEstudantes: TfrmEstudantes;
+  frmProfessores: TProfessoresForm;
   linhaAdicionada: String;
   ListaStrings: TStringList;
 
@@ -47,199 +44,185 @@ type
 
 implementation
 
+uses
+  uModalAdicionarProfessores; // somente no implementation para evitar circularidade
+
 {$R *.dfm}
 
-procedure TfrmEstudantes.BtnAdicionarClick(Sender: TObject);
+procedure TProfessoresForm.BtnAdicionarClick(Sender: TObject);
 begin
   AdicionarProfessor;
 end;
 
-procedure TfrmEstudantes.BtnEditarClick(Sender: TObject);
+procedure TProfessoresForm.BtnEditarClick(Sender: TObject);
 begin
   EditarProfessor;
 end;
 
-procedure TfrmEstudantes.BtnRemoverClick(Sender: TObject);
+procedure TProfessoresForm.BtnRemoverClick(Sender: TObject);
 begin
   ExcluirProfessor;
 end;
 
-procedure TfrmEstudantes.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TProfessoresForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   SalvarTxt;
 end;
 
-procedure TfrmEstudantes.FormCreate(Sender: TObject);
+procedure TProfessoresForm.FormCreate(Sender: TObject);
 begin
   InicializaListaGridProfessores;
   ConfigGraficaProfessoresForm;
   CarregaArquivoTxtNoGrid;
 end;
-// Procedure Usada para pegas os dados do grid e jogar para um Stringlist
-procedure TfrmEstudantes.AdicionaGridNoStringList;
+
+procedure TProfessoresForm.AdicionaGridNoStringList;
 var
   i: Integer;
   linha: string;
 begin
   ListaStrings := TStringList.Create;
-  for i := 1 to GridEstudantes.RowCount - 1 do
+  for i := 1 to GridProfessores.RowCount - 1 do
   begin
-    linha := IntToStr(i) + '|' + GridEstudantes.Cells[1, i] + '|' +
-      GridEstudantes.Cells[2, i];
+    linha := IntToStr(i) + '|' + GridProfessores.Cells[1, i] + '|' +
+      GridProfessores.Cells[2, i];
     ListaStrings.Add(linha);
   end;
 end;
 
-// Procedure da Configuração de Adicionar o Aluno
-procedure TfrmEstudantes.AdicionarProfessor;
+procedure TProfessoresForm.AdicionarProfessor;
 var
-  estudante: TEstudante;
+  professor: TProfessores;
   countLista: Integer;
-  i, ultimoCodigoDaLista: Integer;
+  ultimoCodigoDaLista: Integer;
 begin
-  countLista := ListaEstudantes.Count;
-  ModalEstudantes.ShowModal;
-  estudante := ListaEstudantes.Last;
-  if countLista < ListaEstudantes.Count then
+  countLista := ListaProfessores.Count;
+  ModalAdicionarProfessores.ShowModal; // modal para adicionar professor
+
+  if ListaProfessores.Count > countLista then
   begin
-    if estudante.getNomeEstudante = '' then
+    professor := ListaProfessores.Last;
+
+    if professor.getNomeProfessores = '' then
     begin
-      ShowMessage('O aluno não pode ser adicionado');
+      ShowMessage('O professor não pode ser adicionado');
       Exit;
     end;
 
-    if (GridEstudantes.RowCount <> 2) or (GridEstudantes.Cells[0, 1] <> '') then
-    begin
-      GridEstudantes.RowCount := GridEstudantes.RowCount + 1;
-    end;
+    if (GridProfessores.RowCount <> 2) or (GridProfessores.Cells[0, 1] <> '') then
+      GridProfessores.RowCount := GridProfessores.RowCount + 1;
 
-    if (GridEstudantes.RowCount > 2) then
-      ultimoCodigoDaLista :=
-        StrToIntDef(GridEstudantes.Cells[0, GridEstudantes.RowCount - 2], 0);
+    if (GridProfessores.RowCount > 2) then
+      ultimoCodigoDaLista := StrToIntDef(GridProfessores.Cells[0, GridProfessores.RowCount - 2], 0)
+    else
+      ultimoCodigoDaLista := 0;
 
-    estudante.setCodigo(ultimoCodigoDaLista + 1);
+    linhaAdicionada := GridProfessores.RowCount.ToString;
+    GridProfessores.Cells[0, GridProfessores.RowCount - 1] := IntToStr(ultimoCodigoDaLista + 1);
+    GridProfessores.Cells[1, GridProfessores.RowCount - 1] := professor.getNomeProfessores;
+    GridProfessores.Cells[2, GridProfessores.RowCount - 1] := professor.getCPF;
   end;
-
-  linhaAdicionada := GridEstudantes.RowCount.ToString;
-
-  GridEstudantes.Cells[0, GridEstudantes.RowCount - 1] :=
-    estudante.getCodigo.ToString;
-  GridEstudantes.Cells[1, GridEstudantes.RowCount - 1] :=
-    estudante.getNomeEstudante;
-  GridEstudantes.Cells[2, GridEstudantes.RowCount - 1] := estudante.getCPF;
-
-  estudante.setCodigo(ListaEstudantes.Last.getCodigo + 1);
 end;
 
-// Procedure da Configuração de Editar o Aluno
-procedure TfrmEstudantes.EditarProfessor;
+procedure TProfessoresForm.EditarProfessor;
 begin
-  if GridEstudantes.Row = 0 then
+  if GridProfessores.Row = 0 then
   begin
     ShowMessage('Você não pode editar o cabeçalho.');
     Exit;
   end;
-
-  if GridEstudantes.Cells[1, GridEstudantes.Row] = '' then
+  if GridProfessores.Cells[1, GridProfessores.Row] = '' then
   begin
-    ShowMessage('Não há aluno para editar nesta linha.');
+    ShowMessage('Não há professor para editar nesta linha.');
     Exit;
   end;
-
-  GridEstudantes.EditorMode := True;
-  GridEstudantes.Options := GridEstudantes.Options + [goEditing];
-  ShowMessage('Edição ativada para a linha ' + GridEstudantes.Row.ToString);
+  GridProfessores.EditorMode := True;
+  GridProfessores.Options := GridProfessores.Options + [goEditing];
+  ShowMessage('Edição ativada para a linha ' + GridProfessores.Row.ToString);
 end;
 
-// Procedure da Configuração de Excluir o Aluno
-procedure TfrmEstudantes.ExcluirProfessor;
+procedure TProfessoresForm.ExcluirProfessor;
 var
   linhaSelecionada: Integer;
 begin
-  linhaSelecionada := GridEstudantes.Row;
+  linhaSelecionada := GridProfessores.Row;
   if (linhaSelecionada = 0) or (linhaSelecionada = 1) then
     Exit;
 
-  TStringGridAcessor(GridEstudantes).DeleteRow(linhaSelecionada);
+  TStringGridAcessor(GridProfessores).DeleteRow(linhaSelecionada);
 end;
 
-// Procedure de Carregar O Arquivo.txt no grid
-procedure TfrmEstudantes.CarregaArquivoTxtNoGrid;
+procedure TProfessoresForm.CarregaArquivoTxtNoGrid;
 var
   SeparadorDeString: TStringList;
   i: Integer;
-  estudante: TEstudante;
+  professor: TProfessores;
 begin
-  ListaStrings.LoadFromFile
-    ('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Alunos.txt');
+  ListaStrings.LoadFromFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Professores.txt');
 
   SeparadorDeString := TStringList.Create;
-  SeparadorDeString.Delimiter := '|';
-  SeparadorDeString.StrictDelimiter := True;
+  try
+    SeparadorDeString.Delimiter := '|';
+    SeparadorDeString.StrictDelimiter := True;
 
-  GridEstudantes.RowCount := ListaStrings.Count + 1;
+    GridProfessores.RowCount := ListaStrings.Count + 1;
 
-  for i := 0 to ListaStrings.Count - 1 do
-  begin
-    SeparadorDeString.DelimitedText := ListaStrings[i];
+    for i := 0 to ListaStrings.Count - 1 do
+    begin
+      SeparadorDeString.DelimitedText := ListaStrings[i];
 
-    estudante := TEstudante.Create;
+      professor := TProfessores.Create;
 
-    if SeparadorDeString.Count > 0 then
-      estudante.setCodigo(StrToIntDef(SeparadorDeString[0], 0));
-    if SeparadorDeString.Count > 1 then
-      estudante.setNomeEstudante(SeparadorDeString[1]);
-    if SeparadorDeString.Count > 2 then
-      estudante.setCPF(SeparadorDeString[2]);
+      if SeparadorDeString.Count > 0 then
+        professor.setNomeProfessores(SeparadorDeString[0]);
+      if SeparadorDeString.Count > 1 then
+        professor.setCPF(SeparadorDeString[1]);
 
-    ListaEstudantes.Add(estudante);
+      ListaProfessores.Add(professor);
 
-    GridEstudantes.Cells[0, i + 1] := IntToStr(estudante.getCodigo);
-    GridEstudantes.Cells[1, i + 1] := estudante.getNomeEstudante;
-    GridEstudantes.Cells[2, i + 1] := estudante.getCPF;
+      GridProfessores.Cells[0, i + 1] := IntToStr(i + 1);
+      GridProfessores.Cells[1, i + 1] := professor.getNomeProfessores;
+      GridProfessores.Cells[2, i + 1] := professor.getCPF;
+    end;
+  finally
+    SeparadorDeString.Free;
   end;
-
-  SeparadorDeString.Free;
 end;
 
-// Procedure das Configurações Gráficas do StringGrid
-procedure TfrmEstudantes.ConfigGraficaProfessoresForm;
+procedure TProfessoresForm.ConfigGraficaProfessoresForm;
 begin
-  GridEstudantes.RowCount := 2;
-  GridEstudantes.FixedRows := 1;
+  GridProfessores.RowCount := 2;
+  GridProfessores.FixedRows := 1;
 
-  GridEstudantes.Cells[0, 0] := 'Código';
-  GridEstudantes.Cells[1, 0] := 'Nome';
-  GridEstudantes.Cells[2, 0] := 'CPF';
+  GridProfessores.Cells[0, 0] := 'Código';
+  GridProfessores.Cells[1, 0] := 'Nome';
+  GridProfessores.Cells[2, 0] := 'CPF';
 
-  GridEstudantes.ColWidths[0] := 405;
-  GridEstudantes.ColWidths[1] := 405;
-  GridEstudantes.ColWidths[2] := 367;
+  GridProfessores.ColWidths[0] := 100;
+  GridProfessores.ColWidths[1] := 200;
+  GridProfessores.ColWidths[2] := 150;
 
-  GridEstudantes.ColAlignments[0] := TAlignment.taCenter;
-  GridEstudantes.ColAlignments[1] := TAlignment.taCenter;
-  GridEstudantes.ColAlignments[2] := TAlignment.taCenter;
+  GridProfessores.ColAlignments[0] := TAlignment.taCenter;
+  GridProfessores.ColAlignments[1] := TAlignment.taLeftJustify;
+  GridProfessores.ColAlignments[2] := TAlignment.taCenter;
 end;
 
-// Inicializa a Criação da String list
-procedure TfrmEstudantes.InicializaListaGridProfessores;
+procedure TProfessoresForm.InicializaListaGridProfessores;
 begin
   ListaStrings := TStringList.Create;
 end;
 
-// Salva o arquivo.txt
-procedure TfrmEstudantes.SalvarTxt;
+procedure TProfessoresForm.SalvarTxt;
 begin
   AdicionaGridNoStringList;
-
-  if (GridEstudantes.RowCount <= 1) or (GridEstudantes.Cells[0, 1] = '') then
+  if (GridProfessores.RowCount <= 1) or (GridProfessores.Cells[0, 1] = '') then
   begin
-    ShowMessage('Impossivel baixar o Arquivo de Alunos, Não a dados na lista !');
+    ShowMessage('Impossível salvar o arquivo, não há dados na lista!');
   end
   else
   begin
-    ListaStrings.SaveToFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Alunos.txt');
-    ShowMessage('Arquivo de Alunos Baixado com Sucesso !');
+    ListaStrings.SaveToFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Professores.txt');
+    ShowMessage('Arquivo de Professores salvo com sucesso!');
   end;
 end;
 

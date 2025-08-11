@@ -27,7 +27,6 @@ var
 
 implementation
 
-{$R *.dfm}
 
 procedure TModalEstudantes.Button1Click(Sender: TObject);
 var
@@ -67,6 +66,7 @@ begin
     Result := True;
     Exit;
   end;
+
 
     if Trim(edtCPF.text) = '' then begin
     ShowMessage('O campo ( CPF ) não pode estar vazio');
