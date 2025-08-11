@@ -12,7 +12,6 @@ type
     Panel1: TPanel;
     EdtNome: TEdit;
     edtCPF: TEdit;
-    EdtCodigo: TEdit;
     Button1: TButton;
     Label1: TLabel;
     procedure Button1Click(Sender: TObject);
@@ -37,19 +36,17 @@ begin
   if not VerificaCamposVazios then begin
     try
       Estudante := TEstudante.Create;
-      Estudante.setCodigo(StrToInt(Trim(EdtCodigo.text)));
       Estudante.setNomeEstudante(Trim(EdtNome.text));
       Estudante.setCPF(Trim(edtCPF.text));
 
-      if Assigned(Alunos) then begin
-        Alunos.Add(Estudante);
+      if Assigned(ListaEstudantes) then begin
+        ListaEstudantes.Add(Estudante);
       end else begin
         ShowMessage('A lista de alunos não foi inicializada!');
         Estudante.Free;
       end;
     finally
     end;
-
     ModalEstudantes.Close;
     LimparEdts;
   end;
@@ -58,7 +55,6 @@ end;
 procedure TModalEstudantes.LimparEdts;
 begin
   EdtNome.Clear;
-  EdtCodigo.Clear;
   edtCPF.Clear;
 end;
 
@@ -72,17 +68,12 @@ begin
     Exit;
   end;
 
-  if Trim(EdtCodigo.text) = '' then begin
-    ShowMessage('O campo ( Código ) não pode estar vazio');
-    Result := True;
-    Exit;
-  end;
-
-  if Trim(edtCPF.text) = '' then begin
+    if Trim(edtCPF.text) = '' then begin
     ShowMessage('O campo ( CPF ) não pode estar vazio');
     Result := True;
     Exit;
   end;
-end;
+
+  end;
 
 end.

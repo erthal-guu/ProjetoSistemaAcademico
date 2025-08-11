@@ -6,10 +6,11 @@ uses System.Generics.Collections;
 // Criação da Classe de Estudantes
 Type
   TEstudante = class
+  private
     NomeEstudante: String;
     Codigo: Integer;
     CPF: String;
-
+  public
     // Getters e setters de NomeEstudante
     function getNomeEstudante: String;
     procedure setNomeEstudante(aNomeEstudante: String);
@@ -21,7 +22,7 @@ Type
     procedure setCPF(aCPF: String);
 
 end;
-var Alunos : TObjectList<TEstudante>;
+var ListaEstudantes : TObjectList<TEstudante>;
 implementation
 
 { TEstudantes }
@@ -57,6 +58,6 @@ begin
 end;
 
 initialization
-Alunos := TObjectList<TEstudante>.Create;
+ListaEstudantes := TObjectList<TEstudante>.Create;
 
 end.

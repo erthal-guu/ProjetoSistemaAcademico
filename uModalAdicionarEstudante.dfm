@@ -39,7 +39,7 @@ object ModalEstudantes: TModalEstudantes
       Left = 31
       Top = 101
       Width = 671
-      Height = 23
+      Height = 40
       Margins.Left = 30
       Margins.Top = 100
       Margins.Right = 30
@@ -51,9 +51,9 @@ object ModalEstudantes: TModalEstudantes
     object edtCPF: TEdit
       AlignWithMargins = True
       Left = 31
-      Top = 164
+      Top = 181
       Width = 671
-      Height = 23
+      Height = 40
       Margins.Left = 30
       Margins.Top = 20
       Margins.Right = 30
@@ -63,34 +63,22 @@ object ModalEstudantes: TModalEstudantes
       TabOrder = 1
       TextHint = 'Digite seu CPF'
     end
-    object EdtCodigo: TEdit
-      AlignWithMargins = True
-      Left = 31
-      Top = 227
-      Width = 671
-      Height = 23
-      Margins.Left = 30
-      Margins.Top = 20
-      Margins.Right = 30
-      Align = alTop
-      NumbersOnly = True
-      TabOrder = 2
-      TextHint = 'Digite seu C'#243'digo'
-    end
     object Button1: TButton
       AlignWithMargins = True
       Left = 21
-      Top = 330
+      Top = 276
       Width = 691
-      Height = 65
+      Height = 79
       Margins.Left = 20
       Margins.Top = 20
       Margins.Right = 20
-      Margins.Bottom = 20
+      Margins.Bottom = 60
       Align = alBottom
       Caption = 'Enviar'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = Button1Click
+      ExplicitLeft = 31
+      ExplicitTop = 292
     end
   end
 end
