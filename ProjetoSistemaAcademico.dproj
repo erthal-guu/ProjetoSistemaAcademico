@@ -152,7 +152,10 @@
             <Form>ModalAdicionarProfessores</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uModalAdicionarEstudante.pas"/>
+        <DCCReference Include="uModalAdicionarEstudante.pas">
+            <Form>ModalAdicionarEstudantes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

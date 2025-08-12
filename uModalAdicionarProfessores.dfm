@@ -2,8 +2,8 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
   Left = 0
   Top = 0
   Caption = 'ModalAdicionarProfessores'
-  ClientHeight = 441
-  ClientWidth = 878
+  ClientHeight = 407
+  ClientWidth = 897
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,10 +14,12 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 878
-    Height = 441
+    Width = 897
+    Height = 407
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 878
+    ExplicitHeight = 441
     object Label1: TLabel
       Left = 312
       Top = 40
@@ -35,7 +37,7 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
       AlignWithMargins = True
       Left = 31
       Top = 101
-      Width = 816
+      Width = 835
       Height = 23
       Margins.Left = 30
       Margins.Top = 100
@@ -44,12 +46,13 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
       Align = alTop
       TabOrder = 0
       TextHint = 'Digite seu Nome '
+      ExplicitWidth = 816
     end
     object edtCPF: TEdit
       AlignWithMargins = True
       Left = 31
       Top = 164
-      Width = 816
+      Width = 835
       Height = 23
       Margins.Left = 30
       Margins.Top = 20
@@ -59,12 +62,13 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
       NumbersOnly = True
       TabOrder = 1
       TextHint = 'Digite seu CPF'
+      ExplicitWidth = 816
     end
     object Button1: TButton
       AlignWithMargins = True
       Left = 21
-      Top = 301
-      Width = 836
+      Top = 267
+      Width = 855
       Height = 79
       Margins.Left = 20
       Margins.Top = 20
@@ -73,6 +77,8 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
       Align = alBottom
       Caption = 'Enviar'
       TabOrder = 2
+      ExplicitTop = 301
+      ExplicitWidth = 836
     end
   end
 end

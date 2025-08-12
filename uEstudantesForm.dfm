@@ -24,7 +24,7 @@ object frmEstudantes: TfrmEstudantes
     Color = clInactiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = -8
+    ExplicitLeft = -24
     object Label1: TLabel
       Left = 528
       Top = 28
@@ -52,7 +52,6 @@ object frmEstudantes: TfrmEstudantes
       Color = clLightslategray
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 560
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 816
@@ -76,8 +75,6 @@ object frmEstudantes: TfrmEstudantes
         TabOrder = 0
         StyleName = 'Windows'
         OnClick = BtnEditarClick
-        ExplicitTop = 28
-        ExplicitHeight = 100
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -100,8 +97,6 @@ object frmEstudantes: TfrmEstudantes
         TabOrder = 1
         StyleName = 'Windows'
         OnClick = BtnAdicionarClick
-        ExplicitTop = 28
-        ExplicitHeight = 100
       end
       object BtnRemover: TButton
         AlignWithMargins = True
@@ -125,9 +120,6 @@ object frmEstudantes: TfrmEstudantes
         TabOrder = 2
         StyleName = 'Windows'
         OnClick = BtnRemoverClick
-        ExplicitLeft = 394
-        ExplicitTop = 0
-        ExplicitHeight = 120
       end
     end
     object PnlGridEstudantes: TPanel
@@ -172,10 +164,6 @@ object frmEstudantes: TfrmEstudantes
         ShowHint = False
         TabOrder = 0
         StyleName = 'Windows'
-        ExplicitLeft = 25
-        ExplicitTop = 61
-        ExplicitWidth = 1127
-        ExplicitHeight = 413
       end
     end
   end

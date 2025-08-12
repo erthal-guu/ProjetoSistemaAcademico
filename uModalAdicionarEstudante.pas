@@ -12,14 +12,15 @@ type
     Panel1: TPanel;
     EdtNome: TEdit;
     edtCPF: TEdit;
+    EdtCodigo: TEdit;
     Button1: TButton;
     Label1: TLabel;
     procedure Button1Click(Sender: TObject);
   private
     procedure LimparEdts;
-    function VerificaCamposVazios : Boolean;
+    procedure VerificaCamposVazios;
   public
-
+    { Public declarations }
   end;
 
 var
@@ -27,53 +28,41 @@ var
 
 implementation
 
+{$R *.dfm}
 
 procedure TModalEstudantes.Button1Click(Sender: TObject);
 var
   Estudante: TEstudante;
 begin
-  if not VerificaCamposVazios then begin
-    try
-      Estudante := TEstudante.Create;
-      Estudante.setNomeEstudante(Trim(EdtNome.text));
-      Estudante.setCPF(Trim(edtCPF.text));
-
-      if Assigned(ListaEstudantes) then begin
-        ListaEstudantes.Add(Estudante);
-      end else begin
-        ShowMessage('A lista de alunos não foi inicializada!');
-        Estudante.Free;
-      end;
-    finally
-    end;
-    ModalEstudantes.Close;
-    LimparEdts;
-  end;
+  Estudante := TEstudante.Create;
+  Estudante.setCodigo(StrToInt(EdtCodigo.text));
+  Estudante.setNomeEstudante(EdtNome.text);
+  Estudante.setCPF(edtCPF.text);
+  Alunos.Add(Estudante);
+  ModalEstudantes.Close;
+  LimparEdts;
 end;
 
 procedure TModalEstudantes.LimparEdts;
 begin
-  EdtNome.Clear;
-  edtCPF.Clear;
+EdtNome.Clear;
+EdtCodigo.Clear;
+EdtCPF.Clear;
 end;
 
-Function TModalEstudantes.VerificaCamposVazios: Boolean;
+procedure TModalEstudantes.VerificaCamposVazios;
 begin
-  Result := False;
-
-  if Trim(EdtNome.text) = '' then begin
+  if EdtNome.text = '' then
     ShowMessage('O campo ( Nome ) não pode estar vazio');
-    Result := True;
-    Exit;
-  end;
+  if EdtCodigo.text = '' then
+    ShowMessage('O campo ( Código ) não pode estar vazio');
+  if EdtCPF.text = '' then
+    ShowMessage('O campo ( CPF )não pode estar vazio');
+  if (EdtNome.text = '') and (EdtCodigo.text = '') and (EdtCPF.text = '' ) then begin
+      ShowMessage('Todos os Campos estão Vazios');
+end;
 
+end;
 
-    if Trim(edtCPF.text) = '' then begin
-    ShowMessage('O campo ( CPF ) não pode estar vazio');
-    Result := True;
-    Exit;
-  end;
-
-  end;
 
 end.

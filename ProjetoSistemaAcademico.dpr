@@ -14,7 +14,7 @@ uses
   Vcl.Styles,
   uProfessoresForm in 'uProfessoresForm.pas' {ProfessoresForm},
   uModalAdicionarProfessores in 'uModalAdicionarProfessores.pas' {ModalAdicionarProfessores},
-  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas';
+  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalAdicionarEstudantes};
 
 {$R *.res}
 
@@ -25,7 +25,8 @@ begin
   Application.CreateForm(TfrmEstudantes, frmEstudantes);
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TModalEstudantes, ModalEstudantes);
+  Application.CreateForm(TfModalEstudantes, fModalEstudantes);
   Application.CreateForm(TModalAdicionarProfessores, ModalAdicionarProfessores);
+  Application.CreateForm(TModalAdicionarEstudantes, ModalAdicionarEstudantes);
   Application.Run;
 end.

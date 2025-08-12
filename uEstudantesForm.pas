@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
-  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudante,
+  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudantes,
   System.Generics.Collections;
 
 type
@@ -98,7 +98,7 @@ var
   i, ultimoCodigoDaLista: Integer;
 begin
   countLista := ListaEstudantes.Count;
-  ModalEstudantes.ShowModal;
+  fModalEstudantes.ShowModal;
   estudante := ListaEstudantes.Last;
   if countLista < ListaEstudantes.Count then
   begin
