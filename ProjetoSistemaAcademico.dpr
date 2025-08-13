@@ -17,7 +17,8 @@ uses
   uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalAdicionarEstudantes},
   uDisciplinasForm in 'uDisciplinasForm.pas' {FrmDisciplinas},
   uModalAdicionarDisciplina in 'uModalAdicionarDisciplina.pas' {ModalAdicionarDisciplinas},
-  uTurmasForm in 'uTurmasForm.pas' {FrmTurmas};
+  uTurmasForm in 'uTurmasForm.pas' {FrmTurmas},
+  uMatriculasForm in 'uMatriculasForm.pas' {FrmMatriculas};
 
 {$R *.res}
 
@@ -25,9 +26,10 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Windows10');
-  Application.CreateForm(TFrmProfessores, FrmProfessores);
+  Application.CreateForm(TFrmMatriculas, FrmMatriculas);
   Application.CreateForm(TFrmTurmas, FrmTurmas);
   Application.CreateForm(TFrmDisciplinas, FrmDisciplinas);
+  Application.CreateForm(TFrmProfessores, FrmProfessores);
   Application.CreateForm(TfrmProfessores, frmProfessores);
   Application.CreateForm(TfrmEstudantes, frmEstudantes);
   Application.CreateForm(TfrmMain, frmMain);

@@ -131,7 +131,6 @@ object FrmTurmas: TFrmTurmas
         ParentFont = False
         TabOrder = 1
         OnClick = BtnRemoverClick
-        ExplicitLeft = 8
       end
       object BtnAdicionar: TButton
         AlignWithMargins = True
@@ -153,7 +152,6 @@ object FrmTurmas: TFrmTurmas
         ParentFont = False
         TabOrder = 2
         OnClick = BtnAdicionarClick
-        ExplicitLeft = -68
       end
       object BtnEditarTurma: TButton
         AlignWithMargins = True
@@ -175,7 +173,6 @@ object FrmTurmas: TFrmTurmas
         ParentFont = False
         TabOrder = 3
         OnClick = BtnEditarClick
-        ExplicitLeft = 552
       end
     end
   end

@@ -4,9 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
-  System.Generics.Collections,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids, System.Generics.Collections,
   uTurmas, uDisciplinas, uProfessores;
 
 type
@@ -19,14 +18,12 @@ type
     CbDisciplina: TComboBox;
     BtnAdicionar: TButton;
     BtnEditarTurma: TButton;
-
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BtnAdicionarClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
-
   private
     procedure InicializaGrid;
     procedure CarregarCombos;
@@ -38,7 +35,6 @@ type
     procedure CarregarArquivo;
     procedure CarregarListaProfessores;
     procedure CarregarListaDisciplinas;
-
   public
   end;
 
@@ -61,7 +57,6 @@ begin
   CarregarListaDisciplinas;
   CarregarCombos;
   CarregarArquivo;
-
 end;
 
 procedure TFrmTurmas.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -74,24 +69,18 @@ end;
 procedure TFrmTurmas.InicializaGrid;
 begin
   GridTurmas.RowCount := 2;
-  GridTurmas.ColCount := 4; // Código Turma, Disciplina, Professor, Código Interno
-
+  GridTurmas.ColCount := 4;
   GridTurmas.FixedRows := 1;
-  GridTurmas.FixedCols := 0;
 
-  GridTurmas.Cells[0, 0] := 'Código Turma';
-  GridTurmas.Cells[1, 0] := 'Disciplina';
-  GridTurmas.Cells[2, 0] := 'Professor';
+  GridTurmas.Cells[0,0] := 'Código Turma';
+  GridTurmas.Cells[1,0] := 'Disciplina';
+  GridTurmas.Cells[2,0] := 'Professor';
+  GridTurmas.Cells[3,0] := 'Código Interno';
 
   GridTurmas.ColWidths[0] := 100;
   GridTurmas.ColWidths[1] := 200;
   GridTurmas.ColWidths[2] := 200;
   GridTurmas.ColWidths[3] := 100;
-
-  GridTurmas.ColAlignments[0] := taCenter;
-  GridTurmas.ColAlignments[1] := taCenter;
-  GridTurmas.ColAlignments[2] := taCenter;
-  GridTurmas.ColAlignments[3] := taCenter;
 end;
 
 procedure TFrmTurmas.CarregarCombos;
@@ -120,6 +109,7 @@ var
   professor: TProfessores;
 begin
   GridTurmas.RowCount := ListaTurmas.Count + 1;
+
   for i := 0 to ListaTurmas.Count - 1 do
   begin
     turma := ListaTurmas[i];
@@ -177,7 +167,6 @@ begin
   turma.setCodigoProfessor(StrToIntDef(professorSelecionado.getCPF, 0));
 
   ListaTurmas.Add(turma);
-
   AtualizarGrid;
 end;
 
@@ -242,20 +231,31 @@ begin
   ExcluirTurma;
 end;
 
-
 procedure TFrmTurmas.SalvarArquivo;
 var
   i: Integer;
   turma: TTurma;
+  disciplinaNome: string;
+  disciplina: TDisciplinas;
   linha: string;
 begin
   ListaStrings.Clear;
   for i := 0 to ListaTurmas.Count - 1 do
   begin
     turma := ListaTurmas[i];
-    linha := turma.getCodigo.ToString + '|' +
-             turma.getCodigoDisciplina.ToString + '|' +
-             turma.getCodigoProfessor.ToString;
+
+    disciplinaNome := '';
+    for disciplina in ListaDisciplinas do
+      if disciplina.getCodigo = turma.getCodigoDisciplina then
+      begin
+        disciplinaNome := disciplina.getNomeDisciplina;
+        Break;
+      end;
+
+    linha := IntToStr(turma.getCodigo) + '|' +
+             disciplinaNome + '|' +
+             IntToStr(turma.getCodigoProfessor);
+
     ListaStrings.Add(linha);
   end;
 
@@ -266,9 +266,10 @@ end;
 procedure TFrmTurmas.CarregarArquivo;
 var
   i: Integer;
-  dados: TStringList;
-  campos: TStringList;
+  dados, campos: TStringList;
   turma: TTurma;
+  disciplina: TDisciplinas;
+  nomeDisciplina: string;
 begin
   dados := TStringList.Create;
   campos := TStringList.Create;
@@ -284,8 +285,19 @@ begin
       turma := TTurma.Create;
       if campos.Count > 0 then
         turma.setCodigo(StrToIntDef(campos[0], 0));
+
+      // Recupera código da disciplina pelo nome
       if campos.Count > 1 then
-        turma.setCodigoDisciplina(StrToIntDef(campos[1], 0));
+      begin
+        nomeDisciplina := campos[1];
+        for disciplina in ListaDisciplinas do
+          if disciplina.getNomeDisciplina = nomeDisciplina then
+          begin
+            turma.setCodigoDisciplina(disciplina.getCodigo);
+            Break;
+          end;
+      end;
+
       if campos.Count > 2 then
         turma.setCodigoProfessor(StrToIntDef(campos[2], 0));
 
@@ -296,6 +308,7 @@ begin
     dados.Free;
   end;
 end;
+
 procedure TFrmTurmas.CarregarListaProfessores;
 var
   dados, campos: TStringList;
@@ -353,7 +366,6 @@ begin
     dados.Free;
   end;
 end;
-
 
 procedure TFrmTurmas.FormResize(Sender: TObject);
 begin

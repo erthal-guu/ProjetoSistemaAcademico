@@ -17,8 +17,8 @@ type
     BtnAdicionar: TButton;
     BtnRemover: TButton;
     PnlGridDisciplinas: TPanel;
-    GridDisciplinas : TStringGrid;
     Label1: TLabel;
+    GridDisciplinas: TStringGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);

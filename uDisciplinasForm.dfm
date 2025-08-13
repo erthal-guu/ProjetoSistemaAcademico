@@ -1,9 +1,10 @@
 object FrmDisciplinas: TFrmDisciplinas
   Left = 0
   Top = 0
+  Align = alClient
   Caption = 'FrmDisciplinas'
-  ClientHeight = 0
-  ClientWidth = 120
+  ClientHeight = 794
+  ClientWidth = 1116
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,9 +18,9 @@ object FrmDisciplinas: TFrmDisciplinas
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
-    Top = -851
-    Width = 120
-    Height = 851
+    Top = 8
+    Width = 1116
+    Height = 786
     Align = alBottom
     Color = clWhitesmoke
     ParentBackground = False
@@ -28,8 +29,8 @@ object FrmDisciplinas: TFrmDisciplinas
     object PnlButton: TPanel
       AlignWithMargins = True
       Left = 28
-      Top = 557
-      Width = 64
+      Top = 492
+      Width = 1060
       Height = 113
       Margins.Left = 27
       Margins.Top = 0
@@ -40,6 +41,8 @@ object FrmDisciplinas: TFrmDisciplinas
       Color = clInactiveCaption
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 557
+      ExplicitWidth = 64
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 816
@@ -114,8 +117,8 @@ object FrmDisciplinas: TFrmDisciplinas
       AlignWithMargins = True
       Left = 1
       Top = 1
-      Width = 118
-      Height = 556
+      Width = 1114
+      Height = 491
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -125,11 +128,13 @@ object FrmDisciplinas: TFrmDisciplinas
       Color = clHotLight
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 118
+      ExplicitHeight = 556
       object Label1: TLabel
         AlignWithMargins = True
         Left = 4
         Top = 21
-        Width = 110
+        Width = 1106
         Height = 30
         Margins.Top = 20
         Margins.Bottom = 0
@@ -146,33 +151,27 @@ object FrmDisciplinas: TFrmDisciplinas
       end
       object GridDisciplinas: TStringGrid
         AlignWithMargins = True
-        Left = 1
-        Top = 81
-        Width = 116
-        Height = 474
-        Margins.Left = 0
-        Margins.Top = 30
-        Margins.Right = 0
-        Margins.Bottom = 0
+        Left = 9
+        Top = 59
+        Width = 1096
+        Height = 423
+        Margins.Left = 8
+        Margins.Top = 8
+        Margins.Right = 8
+        Margins.Bottom = 8
         Align = alClient
-        BorderStyle = bsNone
-        ColCount = 2
-        FixedColor = clWhite
+        DefaultColWidth = 150
         FixedCols = 0
-        RowCount = 2
-        Font.Charset = ANSI_CHARSET
+        Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI Semilight'
-        Font.Style = [fsItalic]
-        GradientStartColor = clCream
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goFixedColClick, goFixedRowDefAlign]
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowSelect]
         ParentFont = False
-        ParentShowHint = False
-        ScrollBars = ssNone
-        ShowHint = False
         TabOrder = 0
-        StyleName = 'Windows'
+        ExplicitWidth = 100
+        ExplicitHeight = 488
       end
     end
   end

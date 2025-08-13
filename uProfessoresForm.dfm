@@ -87,7 +87,6 @@ object FrmProfessores: TFrmProfessores
         ParentFont = False
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitLeft = 9
       end
     end
     object PnlButton: TPanel
@@ -125,8 +124,6 @@ object FrmProfessores: TFrmProfessores
         ParentFont = False
         TabOrder = 0
         OnClick = BtnAdicionarClick
-        ExplicitTop = 16
-        ExplicitHeight = 189
       end
       object BtnRemover: TButton
         AlignWithMargins = True
@@ -148,8 +145,7 @@ object FrmProfessores: TFrmProfessores
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 1
-        ExplicitTop = 16
-        ExplicitHeight = 189
+        OnClick = BtnRemoverClick
       end
       object BtnEditar: TButton
         AlignWithMargins = True
@@ -171,8 +167,6 @@ object FrmProfessores: TFrmProfessores
         ParentFont = False
         TabOrder = 2
         OnClick = BtnEditarClick
-        ExplicitTop = 16
-        ExplicitHeight = 189
       end
     end
   end

@@ -168,6 +168,10 @@
             <Form>FrmTurmas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uMatriculasForm.pas">
+            <Form>FrmMatriculas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
