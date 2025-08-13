@@ -13,23 +13,26 @@ object frmMain: TfrmMain
   Font.Style = [fsBold, fsItalic, fsUnderline]
   TextHeight = 30
   object PnlMain: TPanel
-    Left = 152
-    Top = 32
-    Width = 800
-    Height = 665
+    Left = 0
+    Top = 0
+    Width = 1115
+    Height = 850
+    Align = alClient
     Caption = 'PnlMain'
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = -8
     object Label2: TLabel
       AlignWithMargins = True
       Left = 21
       Top = 21
-      Width = 758
-      Height = 50
+      Width = 1073
+      Height = 828
       Margins.Left = 20
       Margins.Top = 20
       Margins.Right = 20
-      Margins.Bottom = 20
-      Align = alTop
+      Margins.Bottom = 0
+      Align = alClient
       Alignment = taCenter
       Caption = 'Tela de Sele'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
@@ -38,24 +41,30 @@ object frmMain: TfrmMain
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitWidth = 266
+      ExplicitLeft = 49
+      ExplicitTop = 53
+      ExplicitHeight = 50
     end
     object PnlContainer: TPanel
-      Left = 56
-      Top = 112
-      Width = 700
-      Height = 489
+      AlignWithMargins = True
+      Left = 4
+      Top = 201
+      Width = 1107
+      Height = 648
+      Margins.Top = 200
+      Margins.Bottom = 0
+      Align = alClient
       Color = cl3DLight
       ParentBackground = False
       TabOrder = 0
       object BtnEstudantes: TButton
         AlignWithMargins = True
         Left = 21
-        Top = 33
-        Width = 658
+        Top = 12
+        Width = 1065
         Height = 55
         Margins.Left = 20
-        Margins.Top = 20
+        Margins.Top = 0
         Margins.Right = 20
         Margins.Bottom = 20
         Align = alBottom
@@ -68,12 +77,14 @@ object frmMain: TfrmMain
         ParentFont = False
         TabOrder = 0
         OnClick = BtnEstudantesClick
+        ExplicitLeft = 117
+        ExplicitTop = 18
       end
       object BtnProfessores: TButton
         AlignWithMargins = True
         Left = 21
-        Top = 128
-        Width = 658
+        Top = 107
+        Width = 1065
         Height = 55
         Margins.Left = 20
         Margins.Top = 20
@@ -89,12 +100,13 @@ object frmMain: TfrmMain
         ParentFont = False
         TabOrder = 1
         OnClick = BtnProfessoresClick
+        ExplicitTop = 214
       end
       object BtnDisciplinas: TButton
         AlignWithMargins = True
         Left = 21
-        Top = 223
-        Width = 658
+        Top = 202
+        Width = 1065
         Height = 55
         Margins.Left = 20
         Margins.Top = 20
@@ -110,12 +122,14 @@ object frmMain: TfrmMain
         ParentFont = False
         TabOrder = 2
         OnClick = BtnDisciplinasClick
+        ExplicitLeft = 37
+        ExplicitTop = 312
       end
       object BtnTurmas: TButton
         AlignWithMargins = True
         Left = 21
-        Top = 318
-        Width = 658
+        Top = 297
+        Width = 1065
         Height = 55
         Margins.Left = 20
         Margins.Top = 20
@@ -131,20 +145,23 @@ object frmMain: TfrmMain
         ParentFont = False
         TabOrder = 3
         OnClick = BtnTurmasClick
+        ExplicitTop = 404
       end
       object BtnMatriculas: TButton
         AlignWithMargins = True
         Left = 21
-        Top = 413
-        Width = 658
+        Top = 392
+        Width = 1065
         Height = 55
         Margins.Left = 20
         Margins.Top = 20
         Margins.Right = 20
-        Margins.Bottom = 20
+        Margins.Bottom = 200
         Align = alBottom
         Caption = 'Matriculas'
         TabOrder = 4
+        OnClick = BtnMatriculasClick
+        ExplicitTop = 499
       end
     end
   end

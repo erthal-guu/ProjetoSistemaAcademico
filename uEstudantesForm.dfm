@@ -25,8 +25,6 @@ object frmEstudantes: TfrmEstudantes
     Color = clWhitesmoke
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -128
-    ExplicitTop = -56
     object PnlButton: TPanel
       AlignWithMargins = True
       Left = 28
@@ -42,7 +40,6 @@ object frmEstudantes: TfrmEstudantes
       Color = clInactiveCaption
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 567
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 816
@@ -111,7 +108,6 @@ object frmEstudantes: TfrmEstudantes
         TabOrder = 2
         StyleName = 'Windows'
         OnClick = BtnRemoverClick
-        ExplicitTop = 17
       end
     end
     object PnlGridEstudantes: TPanel
@@ -145,7 +141,7 @@ object frmEstudantes: TfrmEstudantes
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitLeft = 1
+        ExplicitWidth = 150
       end
       object GridEstudantes: TStringGrid
         AlignWithMargins = True
@@ -176,8 +172,16 @@ object frmEstudantes: TfrmEstudantes
         ShowHint = False
         TabOrder = 0
         StyleName = 'Windows'
-        ExplicitLeft = 4
       end
+    end
+    object BtnVoltar: TButton
+      Left = 38
+      Top = 768
+      Width = 123
+      Height = 41
+      Caption = 'BtnVoltar'
+      TabOrder = 2
+      OnClick = BtnVoltarClick
     end
   end
 end

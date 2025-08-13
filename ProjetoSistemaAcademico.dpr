@@ -26,13 +26,13 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Windows10');
+  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TFrmMatriculas, FrmMatriculas);
   Application.CreateForm(TFrmTurmas, FrmTurmas);
   Application.CreateForm(TFrmDisciplinas, FrmDisciplinas);
   Application.CreateForm(TFrmProfessores, FrmProfessores);
   Application.CreateForm(TfrmProfessores, frmProfessores);
   Application.CreateForm(TfrmEstudantes, frmEstudantes);
-  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TModalAdicionarEstudante, ModalEstudante);
   Application.CreateForm(TModalAdicionarProfessores, ModalAdicionarProfessores);

@@ -19,12 +19,14 @@ type
     PnlGridEstudantes: TPanel;
     GridEstudantes: TStringGrid;
     Label1: TLabel;
+    BtnVoltar: TButton;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormResize(Sender: TObject);
+    procedure BtnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +52,8 @@ implementation
 
 {$R *.dfm}
 
+uses uMain;
+
 procedure TfrmEstudantes.BtnAdicionarClick(Sender: TObject);
 begin
   AdicionarAluno;
@@ -63,6 +67,11 @@ end;
 procedure TfrmEstudantes.BtnRemoverClick(Sender: TObject);
 begin
   ExcluirAluno;
+end;
+
+procedure TfrmEstudantes.BtnVoltarClick(Sender: TObject);
+begin
+  FrmMain.Show;
 end;
 
 procedure TfrmEstudantes.FormClose(Sender: TObject; var Action: TCloseAction);

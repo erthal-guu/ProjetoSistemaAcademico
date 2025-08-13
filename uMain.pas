@@ -4,22 +4,23 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,uEstudantesForm,uProfessoresForm,uDisciplinasForm,uTurmasForm;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,uEstudantesForm,uProfessoresForm,uDisciplinasForm,uTurmasForm,uMatriculasForm;
 
 type
   TfrmMain = class(TForm)
     PnlMain: TPanel;
+    Label2: TLabel;
     PnlContainer: TPanel;
     BtnEstudantes: TButton;
     BtnProfessores: TButton;
     BtnDisciplinas: TButton;
     BtnTurmas: TButton;
     BtnMatriculas: TButton;
-    Label2: TLabel;
     procedure BtnEstudantesClick(Sender: TObject);
     procedure BtnProfessoresClick(Sender: TObject);
     procedure BtnDisciplinasClick(Sender: TObject);
     procedure BtnTurmasClick(Sender: TObject);
+    procedure BtnMatriculasClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,6 +42,11 @@ end;
 procedure TfrmMain.BtnEstudantesClick(Sender: TObject);
 begin
   frmEstudantes.Show;
+end;
+
+procedure TfrmMain.BtnMatriculasClick(Sender: TObject);
+begin
+frmMatriculas.Show;
 end;
 
 procedure TfrmMain.BtnProfessoresClick(Sender: TObject);
