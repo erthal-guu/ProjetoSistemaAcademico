@@ -1,11 +1,11 @@
 # ProjetoSistemaAcademico
 
 
-#Este projeto é um CRUD (Create, Read, Update, Delete) de um sistema acadêmico desenvolvido em Delphi, que gerencia informações de professores, estudantes e turmas. O sistema utiliza TStringList e TObjectList para armazenar dados em memória, com possibilidade de salvar #e carregar arquivos de forma persistente.
+#Este projeto é um CRUD (Create, Read, Update, Delete) de um sistema acadêmico desenvolvido em Delphi, que gerencia informações de professores, estudantes e turmas. O sistema utiliza TStringList e TObjectList para armazenar dados em memória, com possibilidade de salvar ##e carregar arquivos de forma persistente.
 
 -O projeto serve como base para estudos e prática de programação orientada a objetos em Delphi, manipulação de listas e interação com formulários.
 
-#Funcionalidades
+##Funcionalidades
 -Gerenciamento de Estudantes
 
 -Adicionar, editar e remover estudantes.
