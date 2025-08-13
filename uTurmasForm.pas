@@ -11,17 +11,14 @@ uses
 
 type
   TFrmTurmas = class(TForm)
-    BtnEditar: TButton;
-    LabelDisciplina: TLabel;
-    LabelProfessor: TLabel;
     Panel1: TPanel;
     GridTurmas: TStringGrid;
-    Panel2: TPanel;
-    BtnAdicionar: TButton;
     BtnRemover: TButton;
-    Panel3: TPanel;
+    Panel2: TPanel;
     CbProfessor: TComboBox;
     CbDisciplina: TComboBox;
+    BtnAdicionar: TButton;
+    BtnEditarTurma: TButton;
 
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -39,6 +36,8 @@ type
     procedure ExcluirTurma;
     procedure SalvarArquivo;
     procedure CarregarArquivo;
+    procedure CarregarListaProfessores;
+    procedure CarregarListaDisciplinas;
 
   public
   end;
@@ -58,9 +57,11 @@ begin
   ListaStrings := TStringList.Create;
 
   InicializaGrid;
+  CarregarListaProfessores;
+  CarregarListaDisciplinas;
   CarregarCombos;
   CarregarArquivo;
-  AtualizarGrid;
+
 end;
 
 procedure TFrmTurmas.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -81,7 +82,6 @@ begin
   GridTurmas.Cells[0, 0] := 'Código Turma';
   GridTurmas.Cells[1, 0] := 'Disciplina';
   GridTurmas.Cells[2, 0] := 'Professor';
-  GridTurmas.Cells[3, 0] := 'Código Interno';
 
   GridTurmas.ColWidths[0] := 100;
   GridTurmas.ColWidths[1] := 200;
@@ -242,6 +242,7 @@ begin
   ExcluirTurma;
 end;
 
+
 procedure TFrmTurmas.SalvarArquivo;
 var
   i: Integer;
@@ -258,7 +259,8 @@ begin
     ListaStrings.Add(linha);
   end;
 
-  ListaStrings.SaveToFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Turmas.txt');  // Ajuste o caminho
+  ListaStrings.SaveToFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Turmas.txt');
+  ShowMessage('Dados salvos com sucesso');
 end;
 
 procedure TFrmTurmas.CarregarArquivo;
@@ -272,7 +274,7 @@ begin
   campos := TStringList.Create;
   try
     ListaTurmas.Clear;
-    dados.LoadFromFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Turmas.txt'); // Ajuste o caminho
+    dados.LoadFromFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Turmas.txt');
     for i := 0 to dados.Count - 1 do
     begin
       campos.Delimiter := '|';
@@ -294,20 +296,77 @@ begin
     dados.Free;
   end;
 end;
+procedure TFrmTurmas.CarregarListaProfessores;
+var
+  dados, campos: TStringList;
+  i: Integer;
+  professor: TProfessores;
+begin
+  ListaProfessores.Clear;
+  dados := TStringList.Create;
+  campos := TStringList.Create;
+  try
+    dados.LoadFromFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Professores.txt');
+    for i := 0 to dados.Count - 1 do
+    begin
+      campos.Delimiter := '|';
+      campos.StrictDelimiter := True;
+      campos.DelimitedText := dados[i];
+
+      professor := TProfessores.Create;
+      if campos.Count > 0 then professor.setCPF(campos[0]);
+      if campos.Count > 1 then professor.setNomeProfessores(campos[1]);
+
+      ListaProfessores.Add(professor);
+    end;
+  finally
+    campos.Free;
+    dados.Free;
+  end;
+end;
+
+procedure TFrmTurmas.CarregarListaDisciplinas;
+var
+  dados, campos: TStringList;
+  i: Integer;
+  disciplina: TDisciplinas;
+begin
+  ListaDisciplinas.Clear;
+  dados := TStringList.Create;
+  campos := TStringList.Create;
+  try
+    dados.LoadFromFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Disciplinas.txt');
+    for i := 0 to dados.Count - 1 do
+    begin
+      campos.Delimiter := '|';
+      campos.StrictDelimiter := True;
+      campos.DelimitedText := dados[i];
+
+      disciplina := TDisciplinas.Create;
+      if campos.Count > 0 then disciplina.setCodigo(StrToIntDef(campos[0], 0));
+      if campos.Count > 1 then disciplina.setNomeDisciplina(campos[1]);
+
+      ListaDisciplinas.Add(disciplina);
+    end;
+  finally
+    campos.Free;
+    dados.Free;
+  end;
+end;
+
 
 procedure TFrmTurmas.FormResize(Sender: TObject);
 begin
-  BtnAdicionar.Width := 100;
-  BtnEditar.Width := 100;
+  BtnAdicionar.Width :=100;
+  BtnEditarTurma.Width := 100;
   BtnRemover.Width := 100;
 
-  GridTurmas.ColWidths[0] := 100;
-  GridTurmas.ColWidths[1] := 200;
-  GridTurmas.ColWidths[2] := 200;
-  GridTurmas.ColWidths[3] := 100;
+  GridTurmas.ColWidths[0] := 640;
+  GridTurmas.ColWidths[1] := 640;
+  GridTurmas.ColWidths[2] := 640;
 
-  CbDisciplina.Width := 200;
-  CbProfessor.Width := 200;
+  CbDisciplina.Width := 400;
+  CbProfessor.Width := 400;
 end;
 
 end.

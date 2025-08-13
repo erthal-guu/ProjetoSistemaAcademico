@@ -12,7 +12,7 @@ uses
   DataModule in 'DataModule.pas' {DataModule1: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
-  uProfessoresForm in 'uProfessoresForm.pas' {ProfessoresForm},
+  uProfessoresForm in 'uProfessoresForm.pas' {FrmProfessores},
   uModalAdicionarProfessores in 'uModalAdicionarProfessores.pas' {ModalAdicionarProfessores},
   uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalAdicionarEstudantes},
   uDisciplinasForm in 'uDisciplinasForm.pas' {FrmDisciplinas},
@@ -25,9 +25,10 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Windows10');
+  Application.CreateForm(TFrmProfessores, FrmProfessores);
   Application.CreateForm(TFrmTurmas, FrmTurmas);
   Application.CreateForm(TFrmDisciplinas, FrmDisciplinas);
-  Application.CreateForm(TProfessoresForm, frmProfessores);
+  Application.CreateForm(TfrmProfessores, frmProfessores);
   Application.CreateForm(TfrmEstudantes, frmEstudantes);
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TDataModule1, DataModule1);

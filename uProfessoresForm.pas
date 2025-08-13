@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
   System.Generics.Collections, uProfessores;
 type
-  TProfessoresForm = class(TForm)
+  TFrmProfessores = class(TForm)
     Panel1: TPanel;
     PnlButton: TPanel;
     BtnEditar: TButton;
@@ -37,7 +37,7 @@ type
   end;
 
 var
-  frmProfessores: TProfessoresForm;
+  frmProfessores: TFrmProfessores;
   linhaAdicionada: String;
   ListaStrings: TStringList;
 
@@ -51,34 +51,36 @@ uses
 
 {$R *.dfm}
 
-procedure TProfessoresForm.BtnAdicionarClick(Sender: TObject);
+procedure TFrmProfessores.BtnAdicionarClick(Sender: TObject);
 begin
   AdicionarProfessor;
 end;
 
-procedure TProfessoresForm.BtnEditarClick(Sender: TObject);
+procedure TFrmProfessores.BtnEditarClick(Sender: TObject);
 begin
   EditarProfessor;
 end;
 
-procedure TProfessoresForm.BtnRemoverClick(Sender: TObject);
+procedure TFrmProfessores.BtnRemoverClick(Sender: TObject);
 begin
   ExcluirProfessor;
 end;
 
-procedure TProfessoresForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFrmProfessores.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   SalvarTxt;
 end;
 
-procedure TProfessoresForm.FormCreate(Sender: TObject);
+procedure TFrmProfessores.FormCreate(Sender: TObject);
 begin
   InicializaListaGridProfessores;
   ConfigGraficaProfessoresForm;
   CarregaArquivoTxtNoGrid;
+   GridProfessores.Options := GridProfessores.Options - [goEditing];
+
 end;
 
-procedure TProfessoresForm.FormResize(Sender: TObject);
+procedure TFrmProfessores.FormResize(Sender: TObject);
 begin
   btnAdicionar.Width := 600;
   btnRemover.Width := 600;
@@ -90,7 +92,7 @@ begin
 
 end;
 
-procedure TProfessoresForm.AdicionaGridNoStringList;
+procedure TFrmProfessores.AdicionaGridNoStringList;
 var
   i: Integer;
   linha: string;
@@ -104,7 +106,7 @@ begin
   end;
 end;
 
-procedure TProfessoresForm.AdicionarProfessor;
+procedure TFrmProfessores.AdicionarProfessor;
 var
   professor: TProfessores;
   countLista: Integer;
@@ -138,7 +140,7 @@ begin
   end;
 end;
 
-procedure TProfessoresForm.EditarProfessor;
+procedure TFrmProfessores.EditarProfessor;
 begin
   if GridProfessores.Row = 0 then
   begin
@@ -155,7 +157,7 @@ begin
   ShowMessage('Edição ativada para a linha ' + GridProfessores.Row.ToString);
 end;
 
-procedure TProfessoresForm.ExcluirProfessor;
+procedure TFrmProfessores.ExcluirProfessor;
 var
   linhaSelecionada: Integer;
 begin
@@ -166,7 +168,7 @@ begin
   TStringGridAcessor(GridProfessores).DeleteRow(linhaSelecionada);
 end;
 
-procedure TProfessoresForm.CarregaArquivoTxtNoGrid;
+procedure TFrmProfessores.CarregaArquivoTxtNoGrid;
 var
   SeparadorDeString: TStringList;
   i: Integer;
@@ -187,14 +189,14 @@ begin
 
       professor := TProfessores.Create;
 
-      if SeparadorDeString.Count > 0 then
-        professor.setNomeProfessores(SeparadorDeString[0]);
       if SeparadorDeString.Count > 1 then
-        professor.setCPF(SeparadorDeString[1]);
+        professor.setNomeProfessores(SeparadorDeString[1]); // Nome
+      if SeparadorDeString.Count > 2 then
+        professor.setCPF(SeparadorDeString[2]); // CPF
 
       ListaProfessores.Add(professor);
 
-      GridProfessores.Cells[0, i + 1] := IntToStr(i + 1);
+      GridProfessores.Cells[0, i + 1] := SeparadorDeString[0]; // Código
       GridProfessores.Cells[1, i + 1] := professor.getNomeProfessores;
       GridProfessores.Cells[2, i + 1] := professor.getCPF;
     end;
@@ -203,7 +205,8 @@ begin
   end;
 end;
 
-procedure TProfessoresForm.ConfigGraficaProfessoresForm;
+
+procedure TFrmProfessores.ConfigGraficaProfessoresForm;
 begin
   GridProfessores.RowCount := 2;
   GridProfessores.FixedRows := 1;
@@ -221,12 +224,12 @@ begin
   GridProfessores.ColAlignments[2] := TAlignment.taCenter;
 end;
 
-procedure TProfessoresForm.InicializaListaGridProfessores;
+procedure TFrmProfessores.InicializaListaGridProfessores;
 begin
   ListaStrings := TStringList.Create;
 end;
 
-procedure TProfessoresForm.SalvarTxt;
+procedure TFrmProfessores.SalvarTxt;
 begin
   AdicionaGridNoStringList;
   if (GridProfessores.RowCount <= 1) or (GridProfessores.Cells[0, 1] = '') then
