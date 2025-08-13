@@ -1,4 +1,4 @@
-unit uModalAdicionarEstudante;
+Ôªøunit uModalAdicionarEstudante;
 
 interface
 
@@ -8,13 +8,12 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uEstudantes;
 
 type
-  TModalEstudantes = class(TForm)
-    Panel1: TPanel;
+  TModalAdicionarEstudante = class(TForm)
+    Panel2: TPanel;
+    LblTitulo: TLabel;
     EdtNome: TEdit;
     edtCPF: TEdit;
-    EdtCodigo: TEdit;
     Button1: TButton;
-    Label1: TLabel;
     procedure Button1Click(Sender: TObject);
   private
     procedure LimparEdts;
@@ -24,45 +23,38 @@ type
   end;
 
 var
-  ModalEstudantes: TModalEstudantes;
+  ModalEstudante: TModalAdicionarEstudante;
 
 implementation
 
 {$R *.dfm}
 
-procedure TModalEstudantes.Button1Click(Sender: TObject);
-var
-  Estudante: TEstudante;
+procedure TModalAdicionarEstudante.Button1Click(Sender: TObject);
+var estudante : TEstudante;
 begin
-  Estudante := TEstudante.Create;
-  Estudante.setCodigo(StrToInt(EdtCodigo.text));
-  Estudante.setNomeEstudante(EdtNome.text);
-  Estudante.setCPF(edtCPF.text);
-  Alunos.Add(Estudante);
-  ModalEstudantes.Close;
+    VerificaCamposVazios;
+
+    Estudante := TEstudante.Create;
+    Estudante.setNomeEstudante(EdtNome.Text);
+    Estudante.setCPF(edtCPF.Text);
+    ListaEstudantes.Add(Estudante);
+
+  Self.Close;
   LimparEdts;
 end;
 
-procedure TModalEstudantes.LimparEdts;
+procedure TModalAdicionarEstudante.LimparEdts;
 begin
-EdtNome.Clear;
-EdtCodigo.Clear;
-EdtCPF.Clear;
+  EdtNome.Clear;
+  EdtCPF.Clear;
 end;
 
-procedure TModalEstudantes.VerificaCamposVazios;
+procedure TModalAdicionarEstudante.VerificaCamposVazios;
 begin
-  if EdtNome.text = '' then
-    ShowMessage('O campo ( Nome ) n„o pode estar vazio');
-  if EdtCodigo.text = '' then
-    ShowMessage('O campo ( CÛdigo ) n„o pode estar vazio');
-  if EdtCPF.text = '' then
-    ShowMessage('O campo ( CPF )n„o pode estar vazio');
-  if (EdtNome.text = '') and (EdtCodigo.text = '') and (EdtCPF.text = '' ) then begin
-      ShowMessage('Todos os Campos est„o Vazios');
-end;
-
-end;
-
+  if (EdtNome.Text = '') then
+    ShowMessage('O campo (Nome) n√£o pode estar vazio');
+  if (EdtCPF.Text = '') then
+    ShowMessage('O campo (CPF) n√£o pode estar vazio');
+  end;
 
 end.

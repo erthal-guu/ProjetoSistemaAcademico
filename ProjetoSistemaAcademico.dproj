@@ -156,6 +156,18 @@
             <Form>ModalAdicionarEstudantes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uDisciplinasForm.pas">
+            <Form>FrmDisciplinas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uModalAdicionarDisciplina.pas">
+            <Form>ModalAdicionarDisciplinas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uTurmasForm.pas">
+            <Form>FrmTurmas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

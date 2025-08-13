@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids,
-  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudantes,
+  uEstudantes, Data.DB, Vcl.DBGrids, uModalAdicionarEstudante,
   System.Generics.Collections;
 
 type
@@ -15,15 +15,16 @@ type
     PnlButton: TPanel;
     BtnEditar: TButton;
     BtnAdicionar: TButton;
-    Label1: TLabel;
     BtnRemover: TButton;
     PnlGridEstudantes: TPanel;
     GridEstudantes: TStringGrid;
+    Label1: TLabel;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,7 +76,18 @@ begin
   ConfigGraficaEstudantesForm;
   CarregaArquivoTxtNoGrid;
 end;
-// Procedure Usada para pegas os dados do grid e jogar para um Stringlist
+procedure TfrmEstudantes.FormResize(Sender: TObject);
+begin
+  btnAdicionar.Width := 600;
+  btnRemover.Width := 600;
+  btnEditar.Width := 600;
+
+  GridEstudantes.ColWidths[0] := 590;
+  GridEstudantes.ColWidths[1] := 590;
+  GridEstudantes.ColWidths[2] := 590;
+end;
+
+// Procedure Usada para pegas os dados do grid e jogara para um Stringlist
 procedure TfrmEstudantes.AdicionaGridNoStringList;
 var
   i: Integer;
@@ -98,7 +110,7 @@ var
   i, ultimoCodigoDaLista: Integer;
 begin
   countLista := ListaEstudantes.Count;
-  fModalEstudantes.ShowModal;
+  ModalEstudante.ShowModal;
   estudante := ListaEstudantes.Last;
   if countLista < ListaEstudantes.Count then
   begin
@@ -171,7 +183,7 @@ var
   estudante: TEstudante;
 begin
   ListaStrings.LoadFromFile
-    ('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Alunos.txt');
+    ('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Alunos.txt');
 
   SeparadorDeString := TStringList.Create;
   SeparadorDeString.Delimiter := '|';
@@ -212,9 +224,6 @@ begin
   GridEstudantes.Cells[1, 0] := 'Nome';
   GridEstudantes.Cells[2, 0] := 'CPF';
 
-  GridEstudantes.ColWidths[0] := 405;
-  GridEstudantes.ColWidths[1] := 405;
-  GridEstudantes.ColWidths[2] := 367;
 
   GridEstudantes.ColAlignments[0] := TAlignment.taCenter;
   GridEstudantes.ColAlignments[1] := TAlignment.taCenter;
@@ -238,7 +247,7 @@ begin
   end
   else
   begin
-    ListaStrings.SaveToFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Alunos.txt');
+    ListaStrings.SaveToFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Alunos.txt');
     ShowMessage('Arquivo de Alunos Baixado com Sucesso !');
   end;
 end;

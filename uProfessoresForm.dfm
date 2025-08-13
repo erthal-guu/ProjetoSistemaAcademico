@@ -10,6 +10,9 @@ object ProfessoresForm: TProfessoresForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  OnResize = FormResize
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
@@ -17,36 +20,26 @@ object ProfessoresForm: TProfessoresForm
     Width = 1271
     Height = 851
     Align = alBottom
-    Color = clInactiveCaption
+    Color = clWhitesmoke
     ParentBackground = False
     TabOrder = 0
-    object Label1: TLabel
-      Left = 528
-      Top = 28
-      Width = 203
-      Height = 40
-      Caption = 'Lista de Aluno '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -29
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
+    ExplicitWidth = 1265
     object PnlButton: TPanel
       AlignWithMargins = True
       Left = 28
-      Top = 567
+      Top = 557
       Width = 1215
       Height = 113
       Margins.Left = 27
+      Margins.Top = 0
       Margins.Right = 27
-      Margins.Bottom = 170
+      Margins.Bottom = 180
       Align = alBottom
       BevelOuter = bvNone
-      Color = clLightslategray
+      Color = clInactiveCaption
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1209
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 816
@@ -90,6 +83,7 @@ object ProfessoresForm: TProfessoresForm
         ParentFont = False
         TabOrder = 1
         StyleName = 'Windows'
+        OnClick = BtnAdicionarClick
       end
       object BtnRemover: TButton
         AlignWithMargins = True
@@ -114,31 +108,57 @@ object ProfessoresForm: TProfessoresForm
         StyleName = 'Windows'
       end
     end
-    object PnlGridEstudantes: TPanel
+    object PnlGridProfessores: TPanel
       AlignWithMargins = True
-      Left = 20
-      Top = 96
-      Width = 1209
-      Height = 481
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      Caption = 'PnlGridEstudantes'
-      Color = clLightsteelblue
+      Left = 1
+      Top = 1
+      Width = 1269
+      Height = 556
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Align = alClient
+      Caption = 'PnlGridProfessores'
+      Color = clHotLight
       ParentBackground = False
       TabOrder = 1
+      ExplicitLeft = 28
+      ExplicitTop = 86
+      ExplicitWidth = 1209
+      ExplicitHeight = 478
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 4
+        Top = 21
+        Width = 1261
+        Height = 30
+        Margins.Top = 20
+        Margins.Bottom = 0
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Lista de Professores'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -21
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 193
+      end
       object GridProfessores: TStringGrid
         AlignWithMargins = True
-        Left = 21
-        Top = 31
-        Width = 1167
-        Height = 419
-        Margins.Left = 20
+        Left = 31
+        Top = 81
+        Width = 1217
+        Height = 454
+        Margins.Left = 30
         Margins.Top = 30
         Margins.Right = 20
-        Margins.Bottom = 30
+        Margins.Bottom = 20
         Align = alClient
+        BevelInner = bvLowered
+        BorderStyle = bsNone
         ColCount = 3
         FixedColor = clWhite
         FixedCols = 0
@@ -156,6 +176,9 @@ object ProfessoresForm: TProfessoresForm
         ShowHint = False
         TabOrder = 0
         StyleName = 'Windows'
+        ExplicitLeft = 1
+        ExplicitWidth = 1208
+        ExplicitHeight = 396
       end
     end
   end

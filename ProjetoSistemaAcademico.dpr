@@ -14,7 +14,10 @@ uses
   Vcl.Styles,
   uProfessoresForm in 'uProfessoresForm.pas' {ProfessoresForm},
   uModalAdicionarProfessores in 'uModalAdicionarProfessores.pas' {ModalAdicionarProfessores},
-  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalAdicionarEstudantes};
+  uModalAdicionarEstudante in 'uModalAdicionarEstudante.pas' {ModalAdicionarEstudantes},
+  uDisciplinasForm in 'uDisciplinasForm.pas' {FrmDisciplinas},
+  uModalAdicionarDisciplina in 'uModalAdicionarDisciplina.pas' {ModalAdicionarDisciplinas},
+  uTurmasForm in 'uTurmasForm.pas' {FrmTurmas};
 
 {$R *.res}
 
@@ -22,11 +25,13 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Windows10');
+  Application.CreateForm(TFrmTurmas, FrmTurmas);
+  Application.CreateForm(TFrmDisciplinas, FrmDisciplinas);
+  Application.CreateForm(TProfessoresForm, frmProfessores);
   Application.CreateForm(TfrmEstudantes, frmEstudantes);
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TfModalEstudantes, fModalEstudantes);
+  Application.CreateForm(TModalAdicionarEstudante, ModalEstudante);
   Application.CreateForm(TModalAdicionarProfessores, ModalAdicionarProfessores);
-  Application.CreateForm(TModalAdicionarEstudantes, ModalAdicionarEstudantes);
   Application.Run;
 end.

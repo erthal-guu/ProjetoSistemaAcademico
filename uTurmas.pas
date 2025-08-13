@@ -1,7 +1,7 @@
 unit uTurmas;
 
 interface
-
+ uses System.Generics.Collections;
 // Criação da Classe de Turmas
 Type
   TTurma = class
@@ -22,7 +22,7 @@ Type
     procedure setCodigo(aCodigo: Integer);
 
   end;
-
+var  ListaTurmas: TObjectList<TTurma>;
 implementation
 
 { TTurma }
@@ -56,5 +56,7 @@ procedure TTurma.setCodigoProfessor(aCodigoProfessor: Integer);
 begin
   Self.CodigoProfessor := aCodigoProfessor;
 end;
+initialization
+  ListaTurmas := TObjectList<TTurma>.Create;
 
 end.

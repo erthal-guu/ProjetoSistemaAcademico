@@ -13,14 +13,16 @@ type
     PnlButton: TPanel;
     BtnEditar: TButton;
     BtnAdicionar: TButton;
-    Label1: TLabel;
     BtnRemover: TButton;
+    PnlGridProfessores: TPanel;
+    Label1: TLabel;
     GridProfessores: TStringGrid;
     procedure BtnAdicionarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnRemoverClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,6 +76,18 @@ begin
   InicializaListaGridProfessores;
   ConfigGraficaProfessoresForm;
   CarregaArquivoTxtNoGrid;
+end;
+
+procedure TProfessoresForm.FormResize(Sender: TObject);
+begin
+  btnAdicionar.Width := 600;
+  btnRemover.Width := 600;
+  btnEditar.Width := 600;
+
+  GridProfessores.ColWidths[0] := 620;
+  GridProfessores.ColWidths[1] := 620;
+  GridProfessores.ColWidths[2] := 620;
+
 end;
 
 procedure TProfessoresForm.AdicionaGridNoStringList;
@@ -158,7 +172,7 @@ var
   i: Integer;
   professor: TProfessores;
 begin
-  ListaStrings.LoadFromFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Professores.txt');
+  ListaStrings.LoadFromFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Professores.txt');
 
   SeparadorDeString := TStringList.Create;
   try
@@ -203,7 +217,7 @@ begin
   GridProfessores.ColWidths[2] := 150;
 
   GridProfessores.ColAlignments[0] := TAlignment.taCenter;
-  GridProfessores.ColAlignments[1] := TAlignment.taLeftJustify;
+  GridProfessores.ColAlignments[1] := TAlignment.taCenter;
   GridProfessores.ColAlignments[2] := TAlignment.taCenter;
 end;
 
@@ -221,7 +235,7 @@ begin
   end
   else
   begin
-    ListaStrings.SaveToFile('C:\Users\Gustavo Erthal\Desktop\ProjetoSistemaAcademico\arquivos\Professores.txt');
+    ListaStrings.SaveToFile('C:\Users\vplgu\Desktop\ProjetoSistemaAcademico\ProjetoSistemaAcademico\arquivos\Professores.txt');
     ShowMessage('Arquivo de Professores salvo com sucesso!');
   end;
 end;

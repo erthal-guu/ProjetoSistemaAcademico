@@ -67,6 +67,7 @@ object frmMain: TfrmMain
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 0
+        OnClick = BtnEstudantesClick
       end
       object BtnProfessores: TButton
         AlignWithMargins = True
@@ -87,6 +88,7 @@ object frmMain: TfrmMain
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 1
+        OnClick = BtnProfessoresClick
       end
       object BtnDisciplinas: TButton
         AlignWithMargins = True
@@ -107,6 +109,7 @@ object frmMain: TfrmMain
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 2
+        OnClick = BtnDisciplinasClick
       end
       object BtnTurmas: TButton
         AlignWithMargins = True
@@ -127,6 +130,7 @@ object frmMain: TfrmMain
         Font.Style = [fsBold, fsItalic, fsUnderline]
         ParentFont = False
         TabOrder = 3
+        OnClick = BtnTurmasClick
       end
       object BtnMatriculas: TButton
         AlignWithMargins = True

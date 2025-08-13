@@ -1,37 +1,35 @@
-object frmEstudantes: TfrmEstudantes
+object FrmDisciplinas: TFrmDisciplinas
   Left = 0
   Top = 0
-  Caption = 'Estudantes'
-  ClientHeight = 851
-  ClientWidth = 1265
-  Color = clWhite
+  Caption = 'FrmDisciplinas'
+  ClientHeight = 0
+  ClientWidth = 120
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDesktopCenter
-  StyleName = 'Windows'
+  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
-    Top = 0
-    Width = 1265
+    Top = -851
+    Width = 120
     Height = 851
     Align = alBottom
     Color = clWhitesmoke
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -128
-    ExplicitTop = -56
+    OnClick = Panel1Click
     object PnlButton: TPanel
       AlignWithMargins = True
       Left = 28
       Top = 557
-      Width = 1209
+      Width = 64
       Height = 113
       Margins.Left = 27
       Margins.Top = 0
@@ -42,7 +40,6 @@ object frmEstudantes: TfrmEstudantes
       Color = clInactiveCaption
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 567
       object BtnEditar: TButton
         AlignWithMargins = True
         Left = 816
@@ -111,20 +108,20 @@ object frmEstudantes: TfrmEstudantes
         TabOrder = 2
         StyleName = 'Windows'
         OnClick = BtnRemoverClick
-        ExplicitTop = 17
       end
     end
-    object PnlGridEstudantes: TPanel
+    object PnlGridDisciplinas: TPanel
       AlignWithMargins = True
-      Left = 28
-      Top = 86
-      Width = 1209
-      Height = 478
+      Left = 1
+      Top = 1
+      Width = 118
+      Height = 556
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
       Margins.Bottom = 0
-      Caption = 'PnlGridEstudantes'
+      Align = alClient
+      Caption = 'PnlGridDisciplinas'
       Color = clHotLight
       ParentBackground = False
       TabOrder = 1
@@ -132,34 +129,34 @@ object frmEstudantes: TfrmEstudantes
         AlignWithMargins = True
         Left = 4
         Top = 21
-        Width = 1201
+        Width = 110
         Height = 30
         Margins.Top = 20
         Margins.Bottom = 0
         Align = alTop
         Alignment = taCenter
-        Caption = 'Lista de Alunos'
+        Caption = 'Lista de Disciplinas'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -21
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitLeft = 1
+        ExplicitWidth = 185
       end
-      object GridEstudantes: TStringGrid
+      object GridDisciplinas: TStringGrid
         AlignWithMargins = True
         Left = 1
         Top = 81
-        Width = 1207
-        Height = 396
+        Width = 116
+        Height = 474
         Margins.Left = 0
         Margins.Top = 30
         Margins.Right = 0
         Margins.Bottom = 0
         Align = alClient
         BorderStyle = bsNone
-        ColCount = 3
+        ColCount = 2
         FixedColor = clWhite
         FixedCols = 0
         RowCount = 2
@@ -176,7 +173,6 @@ object frmEstudantes: TfrmEstudantes
         ShowHint = False
         TabOrder = 0
         StyleName = 'Windows'
-        ExplicitLeft = 4
       end
     end
   end

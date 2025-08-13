@@ -1,6 +1,7 @@
 unit uDisciplinas;
 
 interface
+uses System.Generics.Collections;
 
 // Criação da Classe de Disciplinas
 Type
@@ -17,7 +18,7 @@ Type
     procedure setCodigo(aCodigo: Integer);
 
   end;
-
+var  ListaDisciplinas : TObjectList<TDisciplinas>;
 implementation
 
 { TDisciplinas }
@@ -42,4 +43,7 @@ begin
   Self.NomeDisciplina := aNomeDisciplina;
 end;
 
+
+initialization
+  ListaDisciplinas := TObjectList<TDisciplinas>.Create;
 end.

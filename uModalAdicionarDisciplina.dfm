@@ -1,9 +1,9 @@
-object ModalAdicionarProfessores: TModalAdicionarProfessores
+object ModalAdicionarDisciplinas: TModalAdicionarDisciplinas
   Left = 0
   Top = 0
-  Caption = 'ModalAdicionarProfessores'
-  ClientHeight = 407
-  ClientWidth = 897
+  Caption = 'ModalAdicionarDisciplinas'
+  ClientHeight = 441
+  ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
     AlignWithMargins = True
     Left = 0
     Top = 0
-    Width = 897
+    Width = 624
     Height = 435
     Margins.Left = 0
     Margins.Top = 0
@@ -27,26 +27,26 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
       AlignWithMargins = True
       Left = 4
       Top = 21
-      Width = 889
+      Width = 616
       Height = 30
       Margins.Top = 20
       Align = alTop
       Alignment = taCenter
-      Caption = 'Cadastro de Professores'
+      Caption = 'Cadastro de Disciplinas'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold, fsItalic]
       ParentFont = False
-      ExplicitWidth = 231
+      ExplicitWidth = 230
     end
     object EdtNome: TEdit
       AlignWithMargins = True
       Left = 31
       Top = 104
-      Width = 835
-      Height = 23
+      Width = 562
+      Height = 50
       Margins.Left = 30
       Margins.Top = 50
       Margins.Right = 30
@@ -55,26 +55,11 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
       TabOrder = 0
       TextHint = 'Digite seu Nome '
     end
-    object edtCPF: TEdit
-      AlignWithMargins = True
-      Left = 31
-      Top = 157
-      Width = 835
-      Height = 23
-      Margins.Left = 30
-      Margins.Top = 0
-      Margins.Right = 30
-      Margins.Bottom = 20
-      Align = alTop
-      NumbersOnly = True
-      TabOrder = 1
-      TextHint = 'Digite seu CPF'
-    end
     object Button1: TButton
       AlignWithMargins = True
       Left = 31
       Top = 255
-      Width = 835
+      Width = 562
       Height = 79
       Margins.Left = 30
       Margins.Top = 20
@@ -82,7 +67,7 @@ object ModalAdicionarProfessores: TModalAdicionarProfessores
       Margins.Bottom = 100
       Align = alBottom
       Caption = 'Enviar'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = Button1Click
     end
   end
